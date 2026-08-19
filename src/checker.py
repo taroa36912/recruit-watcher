@@ -339,7 +339,15 @@ def main() -> int:
     elif notifications:
         log.info("通知候補%d件（Discord送信なし）", len(notifications))
     save_state(results)
-    return 1 if any(r.status == "error" for r in results) else 0
+    error_count = sum(1 for r in results if r.status == "error")
+
+    if error_count:
+    	log.warning(
+            "%d件の取得・判定エラーがありましたが、他の監視対象は正常に処理されたため実行を継続します。",
+            error_count,
+        )
+
+    return 0
 
 
 if __name__ == "__main__":
