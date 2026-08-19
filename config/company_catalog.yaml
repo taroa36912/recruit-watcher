@@ -1,0 +1,1800 @@
+source_note: uploaded DOCX; score list parsed automatically
+companies:
+- score: 75
+  entry: Google(SoftwareEngineer)
+  source: uploaded_docx
+  company: Google
+  categories:
+  - it
+  official_url: https://www.google.com/about/careers/applications/jobs/results/?location=Japan
+- score: 75
+  entry: Apple(開発系エンジニア職)
+  source: uploaded_docx
+  company: Apple
+  categories:
+  - it
+  official_url: https://jobs.apple.com/ja-jp/search?location=japan-JPNC
+- score: 75
+  entry: Nvidia
+  source: uploaded_docx
+  company: NVIDIA
+  categories: []
+  official_url: https://www.nvidia.com/ja-jp/about-nvidia/careers/
+- score: 75
+  entry: Meta(開発系エンジニア職)
+  source: uploaded_docx
+  company: Meta
+  categories:
+  - it
+  official_url: https://www.metacareers.com/jobs/
+- score: 75
+  entry: Amazon(sde)
+  source: uploaded_docx
+  company: Amazon
+  categories:
+  - it
+  official_url: https://www.amazon.jobs/ja/teams/internships-for-students
+- score: 75
+  entry: indeed(エンジニア)
+  source: uploaded_docx
+  company: Indeed
+  categories:
+  - it
+  official_url: https://jp.indeed.com/career
+- score: 75
+  entry: 外銀クオンツ
+  source: uploaded_docx
+  company: 外銀クオンツ
+  categories:
+  - quant
+  official_url: null
+- score: 74
+  entry: PFN
+  source: uploaded_docx
+  company: PFN
+  categories: []
+  official_url: https://www.preferred.jp/ja/careers/
+- score: 74
+  entry: BCG(DS)
+  source: uploaded_docx
+  company: BCG
+  categories:
+  - consulting
+  - it
+  official_url: https://careers.bcg.com/global/en/locations/japan
+- score: 74
+  entry: MUFG(クオンツ)
+  source: uploaded_docx
+  company: 三菱UFJ銀行
+  categories:
+  - quant
+  official_url: https://www.mysite.bk.mufg.jp/28/
+- score: 74
+  entry: 野村證券(クオンツ)
+  source: uploaded_docx
+  company: 野村證券
+  categories:
+  - quant
+  official_url: https://www.nomura-recruit.jp/graduate/
+- score: 74
+  entry: Google(開発職以外)
+  source: uploaded_docx
+  company: Google
+  categories: []
+  official_url: https://www.google.com/about/careers/applications/jobs/results/?location=Japan
+- score: 74
+  entry: AWS(SA/PS)
+  source: uploaded_docx
+  company: AWS
+  categories:
+  - it
+  official_url: https://www.amazon.jobs/content/ja/teams/amazon-web-services
+- score: 74
+  entry: Intel
+  source: uploaded_docx
+  company: Intel
+  categories: []
+  official_url: https://jobs.intel.com/ja
+- score: 74
+  entry: Samsung(R&D)
+  source: uploaded_docx
+  company: Samsung
+  categories:
+  - it
+  official_url: https://www.samsung.com/jp/about-us/careers/
+- score: 74
+  entry: Niantic
+  source: uploaded_docx
+  company: Niantic
+  categories: []
+  official_url: https://careers.nianticlabs.com/
+- score: 73
+  entry: 三菱商事(文系)
+  source: uploaded_docx
+  company: 三菱商事
+  categories: []
+  official_url: null
+- score: 73
+  entry: 三井物産(文系)
+  source: uploaded_docx
+  company: 三井物産
+  categories: []
+  official_url: null
+- score: 73
+  entry: 三井不動産(文系)
+  source: uploaded_docx
+  company: 三井不動産
+  categories: []
+  official_url: null
+- score: 73
+  entry: KPMG FAS(DS)
+  source: uploaded_docx
+  company: KPMG FAS
+  categories:
+  - consulting
+  - it
+  official_url: https://recruit.kpmg-fas.jp/
+- score: 73
+  entry: 武田薬品(研究開発)
+  source: uploaded_docx
+  company: 武田薬品
+  categories: []
+  official_url: null
+- score: 73
+  entry: 中外製薬(研究開発)
+  source: uploaded_docx
+  company: 中外製薬
+  categories: []
+  official_url: null
+- score: 73
+  entry: 第一三共(研究開発)
+  source: uploaded_docx
+  company: 第一三共
+  categories: []
+  official_url: null
+- score: 73
+  entry: 日興証券(クオンツ)
+  source: uploaded_docx
+  company: SMBC日興証券
+  categories:
+  - quant
+  official_url: https://www.smbcnikko.co.jp/recruit/student/
+- score: 73
+  entry: 大和証券(クオンツ)
+  source: uploaded_docx
+  company: 大和証券
+  categories:
+  - quant
+  official_url: https://www.daiwa-grp-recruit.jp/
+- score: 73
+  entry: 三井住友銀行(クオンツ)
+  source: uploaded_docx
+  company: 三井住友銀行
+  categories:
+  - quant
+  official_url: https://www.smbc-freshers.com/
+- score: 73
+  entry: 東京海上日動(AC)
+  source: uploaded_docx
+  company: 東京海上日動
+  categories:
+  - actuary
+  official_url: https://www.saiyou.tokiomarine-nichido.co.jp/
+- score: 73
+  entry: 国際石油開発帝石*INPEX*(研究職)
+  source: uploaded_docx
+  company: INPEX
+  categories: []
+  official_url: null
+- score: 73
+  entry: SONYグループ(R&D)
+  source: uploaded_docx
+  company: ソニーグループ
+  categories:
+  - it
+  official_url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/
+- score: 73
+  entry: Woven by Toyota
+  source: uploaded_docx
+  company: Woven by Toyota
+  categories: []
+  official_url: https://woven.toyota/en/careers/
+- score: 73
+  entry: IBM(基礎研)
+  source: uploaded_docx
+  company: IBM
+  categories:
+  - consulting
+  official_url: https://www.ibm.com/careers/jp-ja/
+- score: 73
+  entry: キーエンス(商品開発)
+  source: uploaded_docx
+  company: キーエンス
+  categories: []
+  official_url: https://www.keyence-jobs.jp/
+- score: 73
+  entry: 三菱重工(宇宙事業部)
+  source: uploaded_docx
+  company: 三菱重工
+  categories: []
+  official_url: https://www.mhi.com/jp/recruit/shinsotsu/
+- score: 72
+  entry: 伊藤忠商事(文系)
+  source: uploaded_docx
+  company: 伊藤忠商事
+  categories: []
+  official_url: null
+- score: 72
+  entry: 三菱地所(文系)
+  source: uploaded_docx
+  company: 三菱地所
+  categories: []
+  official_url: null
+- score: 72
+  entry: ファイザー(臨床開発)
+  source: uploaded_docx
+  company: ファイザー
+  categories: []
+  official_url: null
+- score: 72
+  entry: エーザイ(研究開発)
+  source: uploaded_docx
+  company: エーザイ
+  categories: []
+  official_url: null
+- score: 72
+  entry: 野村AM(クオンツ)
+  source: uploaded_docx
+  company: 野村AM
+  categories:
+  - quant
+  official_url: null
+- score: 72
+  entry: MTEC
+  source: uploaded_docx
+  company: MTEC
+  categories: []
+  official_url: null
+- score: 72
+  entry: 日本生命(AC)
+  source: uploaded_docx
+  company: 日本生命
+  categories:
+  - actuary
+  official_url: https://www.nissay-saiyo.com/
+- score: 72
+  entry: Accenture(DS)
+  source: uploaded_docx
+  company: Accenture
+  categories:
+  - consulting
+  - it
+  official_url: https://www.accenture.com/jp-ja/careers/local/students
+- score: 72
+  entry: MCD3(DS)
+  source: uploaded_docx
+  company: 三菱商事デジタル
+  categories:
+  - it
+  official_url: https://www.mcdigital.jp/careers
+- score: 72
+  entry: Bloomberg(理系職)
+  source: uploaded_docx
+  company: Bloomberg
+  categories: []
+  official_url: https://www.bloomberg.com/company/careers/early-career/
+- score: 72
+  entry: メルカリ(DS/エンジニア)
+  source: uploaded_docx
+  company: メルカリ
+  categories:
+  - it
+  official_url: https://careers.mercari.com/jp/
+- score: 72
+  entry: スマートニュース(エンジニア)
+  source: uploaded_docx
+  company: スマートニュース
+  categories:
+  - it
+  official_url: https://careers.smartnews.com/
+- score: 72
+  entry: DeNA(AI)
+  source: uploaded_docx
+  company: DeNA
+  categories:
+  - it
+  official_url: https://student.dena.com/
+- score: 72
+  entry: 富士フイルム(化学材料/バイオ)
+  source: uploaded_docx
+  company: 富士フイルム
+  categories: []
+  official_url: https://careers.fujifilm.com/graduates
+- score: 72
+  entry: 東京ガス(R&D)
+  source: uploaded_docx
+  company: 東京ガス
+  categories:
+  - it
+  official_url: https://www.tokyo-gas-recruit.com/
+- score: 72
+  entry: AWS(CSE)
+  source: uploaded_docx
+  company: AWS
+  categories:
+  - it
+  official_url: https://www.amazon.jobs/content/ja/teams/amazon-web-services
+- score: 72
+  entry: SONY(R&D)
+  source: uploaded_docx
+  company: ソニー
+  categories:
+  - it
+  official_url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/
+- score: 72
+  entry: 三菱重工(航空宇宙系R&D/総合研究所)
+  source: uploaded_docx
+  company: 三菱重工
+  categories:
+  - it
+  official_url: https://www.mhi.com/jp/recruit/shinsotsu/
+- score: 72
+  entry: JAXA(技術系)
+  source: uploaded_docx
+  company: JAXA
+  categories: []
+  official_url: https://www.jaxa.jp/about/employ/index_j.html
+- score: 72
+  entry: Microsoft(技術営業)
+  source: uploaded_docx
+  company: Microsoft
+  categories:
+  - it
+  official_url: https://careers.microsoft.com/v2/global/ja-jp/home.html
+- score: 71
+  entry: 丸紅(文系)
+  source: uploaded_docx
+  company: 丸紅
+  categories: []
+  official_url: null
+- score: 71
+  entry: 住友商事(文系)
+  source: uploaded_docx
+  company: 住友商事
+  categories: []
+  official_url: null
+- score: 71
+  entry: アステラス(研究開発)
+  source: uploaded_docx
+  company: アステラス
+  categories: []
+  official_url: null
+- score: 71
+  entry: 大塚製薬(研究開発)
+  source: uploaded_docx
+  company: 大塚製薬
+  categories: []
+  official_url: null
+- score: 71
+  entry: 産総研
+  source: uploaded_docx
+  company: 産総研
+  categories: []
+  official_url: null
+- score: 71
+  entry: AGC(横浜 研究開発職)
+  source: uploaded_docx
+  company: AGC
+  categories: []
+  official_url: null
+- score: 71
+  entry: 味の素(R&D)
+  source: uploaded_docx
+  company: 味の素
+  categories:
+  - it
+  official_url: null
+- score: 71
+  entry: サントリー(R&D/食品開発)
+  source: uploaded_docx
+  company: サントリー
+  categories:
+  - it
+  official_url: https://www.suntory.co.jp/recruit/fresh/
+- score: 71
+  entry: 日立(中央研究所 R&D)
+  source: uploaded_docx
+  company: 日立
+  categories:
+  - it
+  official_url: null
+- score: 71
+  entry: NEC(R&D 認識AI)
+  source: uploaded_docx
+  company: NEC
+  categories:
+  - it
+  official_url: https://jpn.nec.com/recruit/newgraduate/
+- score: 71
+  entry: TSMC(DCIJ)
+  source: uploaded_docx
+  company: TSMC
+  categories: []
+  official_url: https://careers.tsmc.com/ja_JP/careers
+- score: 71
+  entry: レーザーテック
+  source: uploaded_docx
+  company: レーザーテック
+  categories:
+  - it
+  official_url: https://www.lasertec.co.jp/recruit/
+- score: 71
+  entry: SONYセミコン(R&D)
+  source: uploaded_docx
+  company: SONYセミコン
+  categories:
+  - it
+  official_url: null
+- score: 71
+  entry: みずほ(QDT)
+  source: uploaded_docx
+  company: みずほフィナンシャルグループ
+  categories:
+  - it
+  official_url: https://www.mizuho-fg.co.jp/saiyou/recruit/
+- score: 71
+  entry: みずほ第一FT
+  source: uploaded_docx
+  company: みずほ第一FT
+  categories:
+  - it
+  official_url: null
+- score: 71
+  entry: 商工中央金庫(クオンツ)
+  source: uploaded_docx
+  company: 商工組合中央金庫
+  categories:
+  - quant
+  official_url: https://www.shokochukin.co.jp/recruit/newgraduate/
+- score: 71
+  entry: 三井住友海上(AC)
+  source: uploaded_docx
+  company: 三井住友海上
+  categories:
+  - actuary
+  official_url: https://www.msig-saiyou.com/
+- score: 71
+  entry: 損害保険ジャパン(AC)
+  source: uploaded_docx
+  company: SOMPO損害保険
+  categories:
+  - actuary
+  official_url: https://www.sompo-japan-saiyo.com/
+- score: 71
+  entry: 第一生命(AC)
+  source: uploaded_docx
+  company: 第一生命
+  categories:
+  - actuary
+  official_url: https://www.dai-ichi-saiyo.jp/
+- score: 71
+  entry: 明治安田生命(AC)
+  source: uploaded_docx
+  company: 明治安田生命
+  categories:
+  - actuary
+  official_url: https://www.meijiyasuda-saiyo.com/
+- score: 71
+  entry: 住友生命(AC)
+  source: uploaded_docx
+  company: 住友生命
+  categories:
+  - actuary
+  official_url: https://www.sumitomolife.co.jp/about/employ/saiyou/
+- score: 71
+  entry: 電通(DS)
+  source: uploaded_docx
+  company: 電通
+  categories:
+  - it
+  official_url: https://www.career.dentsu.jp/recruit/2028/
+- score: 71
+  entry: 三菱UFJ銀行(DS)
+  source: uploaded_docx
+  company: 三菱UFJ銀行
+  categories:
+  - it
+  official_url: https://www.mysite.bk.mufg.jp/28/
+- score: 71
+  entry: P&G(R&D)
+  source: uploaded_docx
+  company: P&G
+  categories:
+  - it
+  official_url: null
+- score: 71
+  entry: ユニリーバ(R&D)
+  source: uploaded_docx
+  company: ユニリーバ
+  categories:
+  - it
+  official_url: null
+- score: 71
+  entry: Cisco(SE/CX部門)
+  source: uploaded_docx
+  company: Cisco
+  categories: []
+  official_url: https://www.cisco.com/c/ja_jp/about/careers.html
+- score: 71
+  entry: MCD3(エンジニア)
+  source: uploaded_docx
+  company: 三菱商事デジタル
+  categories:
+  - it
+  official_url: https://www.mcdigital.jp/careers
+- score: 70
+  entry: 日本郵船(文系)
+  source: uploaded_docx
+  company: 日本郵船
+  categories: []
+  official_url: null
+- score: 70
+  entry: 商船三井(文系)
+  source: uploaded_docx
+  company: 商船三井
+  categories: []
+  official_url: null
+- score: 70
+  entry: 塩野義製薬(研究開発)
+  source: uploaded_docx
+  company: 塩野義製薬
+  categories: []
+  official_url: null
+- score: 70
+  entry: 小野薬品工業(研究開発)
+  source: uploaded_docx
+  company: 小野薬品工業
+  categories: []
+  official_url: null
+- score: 70
+  entry: NTT研究所
+  source: uploaded_docx
+  company: NTT研究所
+  categories:
+  - it
+  official_url: https://www.rd.ntt/recruit/
+- score: 70
+  entry: 三菱重工(航空宇宙以外 R&D)
+  source: uploaded_docx
+  company: 三菱重工
+  categories:
+  - it
+  official_url: https://www.mhi.com/jp/recruit/shinsotsu/
+- score: 70
+  entry: 鹿島建設(研究開発)
+  source: uploaded_docx
+  company: 鹿島建設
+  categories: []
+  official_url: null
+- score: 70
+  entry: Microsoft(テクサポ)
+  source: uploaded_docx
+  company: Microsoft
+  categories:
+  - it
+  official_url: https://careers.microsoft.com/v2/global/ja-jp/home.html
+- score: 70
+  entry: 三菱ケミカル(横浜 研究開発職)
+  source: uploaded_docx
+  company: 三菱ケミカル
+  categories: []
+  official_url: null
+- score: 70
+  entry: 旭化成(研究開発)
+  source: uploaded_docx
+  company: 旭化成
+  categories: []
+  official_url: null
+- score: 70
+  entry: キリン(基礎研究)
+  source: uploaded_docx
+  company: キリン
+  categories: []
+  official_url: null
+- score: 70
+  entry: ENEOS(研究開発)
+  source: uploaded_docx
+  company: ENEOS
+  categories: []
+  official_url: null
+- score: 70
+  entry: 三菱UFJ信託銀行(AC)
+  source: uploaded_docx
+  company: 三菱UFJ信託銀行
+  categories:
+  - actuary
+  official_url: https://www.mutbsaiyo.com/
+- score: 70
+  entry: IGPI Digital Intelligence
+  source: uploaded_docx
+  company: IGPI Digital Intelligence
+  categories:
+  - consulting
+  - it
+  official_url: https://www.igpi-di.co.jp/recruit/
+- score: 70
+  entry: 三井住友銀行(DS)
+  source: uploaded_docx
+  company: 三井住友銀行
+  categories:
+  - it
+  official_url: https://www.smbc-freshers.com/
+- score: 70
+  entry: 第一生命(DS)
+  source: uploaded_docx
+  company: 第一生命
+  categories:
+  - it
+  official_url: https://www.dai-ichi-saiyo.jp/
+- score: 70
+  entry: SONYグループ(DS)
+  source: uploaded_docx
+  company: ソニーグループ
+  categories:
+  - it
+  official_url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/
+- score: 70
+  entry: 任天堂(エンジニア)
+  source: uploaded_docx
+  company: 任天堂
+  categories:
+  - it
+  official_url: https://www.nintendo.co.jp/jobs/recruit/index.html
+- score: 70
+  entry: キーエンス(CE)
+  source: uploaded_docx
+  company: キーエンス
+  categories:
+  - it
+  official_url: https://www.keyence-jobs.jp/
+- score: 69
+  entry: 三菱総合研究所*MRI*
+  source: uploaded_docx
+  company: 三菱総合研究所
+  categories:
+  - consulting
+  - it
+  official_url: https://www.mri-recruit.com/
+- score: 69
+  entry: キーエンス(生産技術)
+  source: uploaded_docx
+  company: キーエンス
+  categories: []
+  official_url: https://www.keyence-jobs.jp/
+- score: 69
+  entry: adobe(DX)
+  source: uploaded_docx
+  company: Adobe
+  categories:
+  - it
+  official_url: https://careers.adobe.com/jp/ja
+- score: 69
+  entry: SAP(ITコン)
+  source: uploaded_docx
+  company: SAP
+  categories:
+  - consulting
+  - it
+  official_url: https://jobs.sap.com/
+- score: 69
+  entry: キー局技術
+  source: uploaded_docx
+  company: キー局技術
+  categories: []
+  official_url: null
+- score: 69
+  entry: 日立(日立研究所 R&D)
+  source: uploaded_docx
+  company: 日立
+  categories:
+  - it
+  official_url: null
+- score: 69
+  entry: PanasonicHD(研究開発)
+  source: uploaded_docx
+  company: パナソニック
+  categories: []
+  official_url: https://recruit.jpn.panasonic.com/newgrads/
+- score: 69
+  entry: 三井住友信託銀行(AC)
+  source: uploaded_docx
+  company: 三井住友信託銀行
+  categories:
+  - actuary
+  official_url: https://www.smtb.jp/recruit/new-graduate
+- score: 69
+  entry: 三菱UFJ信託銀行(DS)
+  source: uploaded_docx
+  company: 三菱UFJ信託銀行
+  categories:
+  - it
+  official_url: https://www.mutbsaiyo.com/
+- score: 69
+  entry: 味の素(DS)
+  source: uploaded_docx
+  company: 味の素
+  categories:
+  - it
+  official_url: null
+- score: 69
+  entry: AGC(DS)
+  source: uploaded_docx
+  company: AGC
+  categories:
+  - it
+  official_url: null
+- score: 69
+  entry: 博報堂(DS)
+  source: uploaded_docx
+  company: 博報堂
+  categories:
+  - it
+  official_url: https://hakusuku.jp/recruit/
+- score: 69
+  entry: 国際石油開発帝石*INPEX*(研究職以外)
+  source: uploaded_docx
+  company: INPEX
+  categories: []
+  official_url: null
+- score: 69
+  entry: ソニー(開発系)
+  source: uploaded_docx
+  company: ソニー
+  categories:
+  - it
+  official_url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/
+- score: 69
+  entry: DeNA(エンジニア)
+  source: uploaded_docx
+  company: DeNA
+  categories:
+  - it
+  official_url: https://student.dena.com/
+- score: 68
+  entry: 三菱UFJ銀行(サイバー)
+  source: uploaded_docx
+  company: 三菱UFJ銀行
+  categories:
+  - it
+  official_url: https://www.mysite.bk.mufg.jp/28/
+- score: 68
+  entry: 富士通(R&D)
+  source: uploaded_docx
+  company: 富士通
+  categories:
+  - it
+  official_url: https://fujitsu.recruiting.jp.fujitsu.com/
+- score: 68
+  entry: 出光興産(R&D)
+  source: uploaded_docx
+  company: 出光興産
+  categories:
+  - it
+  official_url: null
+- score: 68
+  entry: 野村総合研究所*NRI*(TE/AE)
+  source: uploaded_docx
+  company: 野村総合研究所
+  categories:
+  - consulting
+  - it
+  official_url: https://www.nri.com/jp/career/student/
+- score: 68
+  entry: 日本経済新聞社(テック系)
+  source: uploaded_docx
+  company: 日本経済新聞社
+  categories:
+  - it
+  official_url: https://recruit.nikkei.co.jp/
+- score: 68
+  entry: JR東海(技術総合)
+  source: uploaded_docx
+  company: JR東海
+  categories:
+  - it
+  official_url: null
+- score: 68
+  entry: トヨタ(技術職)
+  source: uploaded_docx
+  company: トヨタ
+  categories: []
+  official_url: null
+- score: 68
+  entry: アサヒビール(食品開発)
+  source: uploaded_docx
+  company: アサヒビール
+  categories: []
+  official_url: null
+- score: 68
+  entry: 東京ガス(開発)
+  source: uploaded_docx
+  company: 東京ガス
+  categories: []
+  official_url: https://www.tokyo-gas-recruit.com/
+- score: 68
+  entry: 東レ(研究開発)
+  source: uploaded_docx
+  company: 東レ
+  categories: []
+  official_url: null
+- score: 68
+  entry: 資生堂(研究開発)
+  source: uploaded_docx
+  company: 資生堂
+  categories: []
+  official_url: null
+- score: 68
+  entry: みずほ信託銀行(AC)
+  source: uploaded_docx
+  company: みずほ信託銀行
+  categories:
+  - actuary
+  official_url: null
+- score: 68
+  entry: 三井住友信託銀行(DS)
+  source: uploaded_docx
+  company: 三井住友信託銀行
+  categories:
+  - it
+  official_url: https://www.smtb.jp/recruit/new-graduate
+- score: 68
+  entry: IBM(DS)
+  source: uploaded_docx
+  company: IBM
+  categories:
+  - consulting
+  - it
+  official_url: https://www.ibm.com/careers/jp-ja/
+- score: 68
+  entry: NTT docomo(AI)
+  source: uploaded_docx
+  company: NTTドコモ
+  categories:
+  - it
+  official_url: https://information.nttdocomo-fresh.jp/
+- score: 68
+  entry: サントリー(DS)
+  source: uploaded_docx
+  company: サントリー
+  categories:
+  - it
+  official_url: https://www.suntory.co.jp/recruit/fresh/
+- score: 68
+  entry: リクルート(DS)
+  source: uploaded_docx
+  company: リクルート
+  categories:
+  - it
+  official_url: https://www.recruit.co.jp/employment/students/
+- score: 67
+  entry: DTC
+  source: uploaded_docx
+  company: デロイト トーマツ コンサルティング
+  categories:
+  - consulting
+  official_url: https://www.deloitte.com/jp/ja/careers/explore-your-fit/students.html
+- score: 67
+  entry: PWC
+  source: uploaded_docx
+  company: PwC
+  categories:
+  - consulting
+  official_url: https://www.pwc.com/jp/ja/careers/new-graduate-recruiting.html
+- score: 67
+  entry: Salesforce(技術営業)
+  source: uploaded_docx
+  company: Salesforce
+  categories:
+  - it
+  official_url: https://careers.salesforce.com/ja/early-career/
+- score: 67
+  entry: KDDI総合研究所
+  source: uploaded_docx
+  company: KDDI総合研究所
+  categories:
+  - it
+  official_url: null
+- score: 67
+  entry: キヤノン(研究職)
+  source: uploaded_docx
+  company: キヤノン
+  categories: []
+  official_url: https://global.canon/ja/employ/new/
+- score: 67
+  entry: IHI(航空宇宙系研究職)
+  source: uploaded_docx
+  company: IHI
+  categories: []
+  official_url: https://www.ihi.co.jp/recruit/ihi/
+- score: 67
+  entry: Panasonic(研究開発)
+  source: uploaded_docx
+  company: パナソニック
+  categories: []
+  official_url: https://recruit.jpn.panasonic.com/newgrads/
+- score: 67
+  entry: 川崎重工業(研究)
+  source: uploaded_docx
+  company: 川崎重工業
+  categories: []
+  official_url: https://www.khi-saiyo.jp/
+- score: 67
+  entry: ブリヂストン(研究開発)
+  source: uploaded_docx
+  company: ブリヂストン
+  categories: []
+  official_url: null
+- score: 67
+  entry: 中部電力(再生可能エネルギー)
+  source: uploaded_docx
+  company: 中部電力
+  categories: []
+  official_url: null
+- score: 67
+  entry: 富士フイルム(生産技術/ソフトウェア)
+  source: uploaded_docx
+  company: 富士フイルム
+  categories:
+  - it
+  official_url: https://careers.fujifilm.com/graduates
+- score: 67
+  entry: SONYセミコンダクタソリューションズ(開発系)
+  source: uploaded_docx
+  company: ソニーセミコンダクタソリューションズ
+  categories:
+  - it
+  official_url: https://www.sony-semicon.com/ja/jobs/newgrads/
+- score: 67
+  entry: ディスコ(東京採用技術系総合)
+  source: uploaded_docx
+  company: ディスコ
+  categories: []
+  official_url: https://www.disco.co.jp/recruit/
+- score: 67
+  entry: 東京ガス(技術営業/DXコース)
+  source: uploaded_docx
+  company: 東京ガス
+  categories:
+  - it
+  official_url: https://www.tokyo-gas-recruit.com/
+- score: 67
+  entry: 三井住友銀行(サイバー)
+  source: uploaded_docx
+  company: 三井住友銀行
+  categories:
+  - it
+  official_url: https://www.smbc-freshers.com/
+- score: 67
+  entry: キーエンス(ICT)
+  source: uploaded_docx
+  company: キーエンス
+  categories:
+  - it
+  official_url: https://www.keyence-jobs.jp/
+- score: 67
+  entry: 花王(研究開発)
+  source: uploaded_docx
+  company: 花王
+  categories: []
+  official_url: null
+- score: 67
+  entry: 明治(研究開発)
+  source: uploaded_docx
+  company: 明治
+  categories: []
+  official_url: null
+- score: 67
+  entry: キッコーマン(研究開発)
+  source: uploaded_docx
+  company: キッコーマン
+  categories: []
+  official_url: null
+- score: 67
+  entry: 商工中央金庫(DS)
+  source: uploaded_docx
+  company: 商工組合中央金庫
+  categories:
+  - it
+  official_url: https://www.shokochukin.co.jp/recruit/newgraduate/
+- score: 67
+  entry: あいおい日生損保(AC)
+  source: uploaded_docx
+  company: あいおい日生損保
+  categories:
+  - actuary
+  official_url: null
+- score: 67
+  entry: 日立(DS)
+  source: uploaded_docx
+  company: 日立
+  categories:
+  - it
+  official_url: null
+- score: 67
+  entry: NTT docomo(DS)
+  source: uploaded_docx
+  company: NTTドコモ
+  categories:
+  - it
+  official_url: https://information.nttdocomo-fresh.jp/
+- score: 67
+  entry: リクルート(エンジニア)
+  source: uploaded_docx
+  company: リクルート
+  categories:
+  - it
+  official_url: https://www.recruit.co.jp/employment/students/
+- score: 67
+  entry: 楽天(エンジニア)
+  source: uploaded_docx
+  company: 楽天
+  categories:
+  - it
+  official_url: https://corp.rakuten.co.jp/careers/graduates/
+- score: 67
+  entry: LINE Yahoo(エンジニア)
+  source: uploaded_docx
+  company: LINEヤフー
+  categories:
+  - it
+  official_url: https://www.lycorp.co.jp/ja/recruit/newgrads/
+- score: 66
+  entry: EY
+  source: uploaded_docx
+  company: EY
+  categories:
+  - consulting
+  official_url: https://www.ey.com/ja_jp/careers/students
+- score: 66
+  entry: KPMG
+  source: uploaded_docx
+  company: KPMG
+  categories:
+  - consulting
+  official_url: https://recruit.kpmg.jp/
+- score: 66
+  entry: salesforce(CSG)
+  source: uploaded_docx
+  company: Salesforce
+  categories: []
+  official_url: https://careers.salesforce.com/ja/early-career/
+- score: 66
+  entry: Oracle(コンサル/SE)
+  source: uploaded_docx
+  company: Oracle
+  categories:
+  - consulting
+  - it
+  official_url: https://www.oracle.com/jp/careers/students-grads/
+- score: 66
+  entry: NEC(R&D 認証AI以外)
+  source: uploaded_docx
+  company: NEC
+  categories:
+  - it
+  official_url: https://jpn.nec.com/recruit/newgraduate/
+- score: 66
+  entry: 東芝(研究開発)
+  source: uploaded_docx
+  company: 東芝
+  categories: []
+  official_url: https://www.global.toshiba/jp/recruit/corporate/newgraduates.html
+- score: 66
+  entry: 三菱電機(研究職)
+  source: uploaded_docx
+  company: 三菱電機
+  categories: []
+  official_url: https://www.mitsubishielectric.co.jp/saiyo/graduates/
+- score: 66
+  entry: 東京エレクトロン
+  source: uploaded_docx
+  company: 東京エレクトロン
+  categories: []
+  official_url: https://www.tel.co.jp/recruit/newgraduate/
+- score: 66
+  entry: 日本製鉄(グローバル)
+  source: uploaded_docx
+  company: 日本製鉄
+  categories: []
+  official_url: https://www.nipponsteel.com/recruit/newgraduate/
+- score: 66
+  entry: 住友化学(クリエイティブ)
+  source: uploaded_docx
+  company: 住友化学
+  categories: []
+  official_url: null
+- score: 66
+  entry: 本田技研工業(研究職採用)
+  source: uploaded_docx
+  company: 本田技研工業
+  categories: []
+  official_url: null
+- score: 66
+  entry: IHI(航空宇宙以外 研究職)
+  source: uploaded_docx
+  company: IHI
+  categories: []
+  official_url: https://www.ihi.co.jp/recruit/ihi/
+- score: 66
+  entry: 三菱ケミカル(横浜以外 研究開発)
+  source: uploaded_docx
+  company: 三菱ケミカル
+  categories: []
+  official_url: null
+- score: 66
+  entry: 信越化学(研究開発)663M(m&sc)
+  source: uploaded_docx
+  company: 信越化学663M
+  categories: []
+  official_url: null
+- score: 66
+  entry: 日立製作所(設計・開発)
+  source: uploaded_docx
+  company: 日立製作所
+  categories: []
+  official_url: https://www.hitachi.co.jp/recruit/newgraduate/
+- score: 66
+  entry: ENEOS(新規技術)
+  source: uploaded_docx
+  company: ENEOS
+  categories: []
+  official_url: null
+- score: 66
+  entry: バンダイナムコスタジオ(ゲームエンジニア)
+  source: uploaded_docx
+  company: バンダイナムコスタジオ
+  categories:
+  - it
+  official_url: https://www.bandainamcostudios.com/recruit/
+- score: 66
+  entry: 富士フイルム(技術営業)
+  source: uploaded_docx
+  company: 富士フイルム
+  categories:
+  - it
+  official_url: https://careers.fujifilm.com/graduates
+- score: 66
+  entry: 三菱重工(設計・デジタル)
+  source: uploaded_docx
+  company: 三菱重工
+  categories:
+  - it
+  official_url: https://www.mhi.com/jp/recruit/shinsotsu/
+- score: 66
+  entry: AGC(化学 生産技術)
+  source: uploaded_docx
+  company: AGC
+  categories: []
+  official_url: null
+- score: 66
+  entry: サントリー(生産技術)
+  source: uploaded_docx
+  company: サントリー
+  categories: []
+  official_url: https://www.suntory.co.jp/recruit/fresh/
+- score: 66
+  entry: 富士通(DS)
+  source: uploaded_docx
+  company: 富士通
+  categories:
+  - it
+  official_url: https://fujitsu.recruiting.jp.fujitsu.com/
+- score: 66
+  entry: KDDI(DS)
+  source: uploaded_docx
+  company: KDDI
+  categories:
+  - it
+  official_url: https://career.kddi.com/freshers/
+- score: 65
+  entry: Accenture(ビジネス/デジタル)
+  source: uploaded_docx
+  company: Accenture
+  categories:
+  - consulting
+  official_url: https://www.accenture.com/jp-ja/careers/local/students
+- score: 65
+  entry: 日産化学(研究開発)
+  source: uploaded_docx
+  company: 日産化学
+  categories: []
+  official_url: null
+- score: 65
+  entry: SBI(DS)
+  source: uploaded_docx
+  company: SBIホールディングス
+  categories:
+  - it
+  official_url: null
+- score: 65
+  entry: 新生銀行(DS)
+  source: uploaded_docx
+  company: SBI新生銀行
+  categories:
+  - it
+  official_url: https://www.sbishinseibank.co.jp/recruit/newgraduate/
+- score: 65
+  entry: アビームコンサルティング
+  source: uploaded_docx
+  company: アビームコンサルティング
+  categories:
+  - consulting
+  official_url: https://www.abeam.com/jp/ja/recruit/newgraduate/
+- score: 65
+  entry: パナソニックインダストリー(研究開発)
+  source: uploaded_docx
+  company: パナソニックインダストリー
+  categories: []
+  official_url: https://recruit.industry.panasonic.com/
+- score: 65
+  entry: パナソニックコネクト(研究開発)
+  source: uploaded_docx
+  company: パナソニックコネクト
+  categories: []
+  official_url: https://connect.panasonic.com/jp-ja/recruit/new-graduate
+- score: 65
+  entry: パナソニックエナジー(研究開発)
+  source: uploaded_docx
+  company: パナソニックエナジー
+  categories: []
+  official_url: https://www.panasonic.com/jp/energy/recruit/newgraduate.html
+- score: 65
+  entry: アドバンテスト(研究開発)
+  source: uploaded_docx
+  company: アドバンテスト
+  categories: []
+  official_url: null
+- score: 65
+  entry: デンソー(モビリティ/電動化/半導体)
+  source: uploaded_docx
+  company: デンソー
+  categories: []
+  official_url: https://careers.denso.com/newgraduate/
+- score: 65
+  entry: JFEスチール(技術系)
+  source: uploaded_docx
+  company: JFEスチール
+  categories: []
+  official_url: null
+- score: 65
+  entry: トヨタ(生産技術)
+  source: uploaded_docx
+  company: トヨタ
+  categories: []
+  official_url: null
+- score: 65
+  entry: 武田薬品(生産技術)
+  source: uploaded_docx
+  company: 武田薬品
+  categories: []
+  official_url: null
+- score: 65
+  entry: 旭化成(生産技術)
+  source: uploaded_docx
+  company: 旭化成
+  categories: []
+  official_url: null
+- score: 65
+  entry: AGC(ガラス 生産技術)
+  source: uploaded_docx
+  company: AGC
+  categories: []
+  official_url: null
+- score: 65
+  entry: P&G(生産統括)
+  source: uploaded_docx
+  company: P&G
+  categories: []
+  official_url: null
+- score: 65
+  entry: キリン(エンジニアリング)
+  source: uploaded_docx
+  company: キリン
+  categories:
+  - it
+  official_url: null
+- score: 65
+  entry: 森永乳業(研究/食品開発)
+  source: uploaded_docx
+  company: 森永乳業
+  categories: []
+  official_url: null
+- score: 65
+  entry: 日揮
+  source: uploaded_docx
+  company: 日揮
+  categories: []
+  official_url: null
+- score: 65
+  entry: スカパー
+  source: uploaded_docx
+  company: スカパー
+  categories: []
+  official_url: null
+- score: 65
+  entry: 大阪ガス
+  source: uploaded_docx
+  company: 大阪ガス
+  categories: []
+  official_url: null
+- score: 64
+  entry: シャープ(研究職)
+  source: uploaded_docx
+  company: シャープ
+  categories: []
+  official_url: null
+- score: 64
+  entry: 三井化学(生産技術)
+  source: uploaded_docx
+  company: 三井化学
+  categories: []
+  official_url: null
+- score: 64
+  entry: 東レ(生産技術)
+  source: uploaded_docx
+  company: 東レ
+  categories: []
+  official_url: null
+- score: 64
+  entry: 三菱重工(エンジニアリング)
+  source: uploaded_docx
+  company: 三菱重工
+  categories:
+  - it
+  official_url: https://www.mhi.com/jp/recruit/shinsotsu/
+- score: 64
+  entry: 住友電工(技術系)
+  source: uploaded_docx
+  company: 住友電工
+  categories: []
+  official_url: null
+- score: 64
+  entry: ファナック
+  source: uploaded_docx
+  company: ファナック
+  categories: []
+  official_url: null
+- score: 64
+  entry: ベイカレ
+  source: uploaded_docx
+  company: ベイカレント
+  categories:
+  - consulting
+  official_url: https://www.baycurrent.co.jp/recruit/newgraduate/
+- score: 64
+  entry: ベイカレコンサルティング
+  source: uploaded_docx
+  company: ベイカレント
+  categories:
+  - consulting
+  official_url: https://www.baycurrent.co.jp/recruit/newgraduate/
+- score: 64
+  entry: NTTデータ
+  source: uploaded_docx
+  company: NTTデータ
+  categories: []
+  official_url: https://nttdata-recruit.com/
+- score: 64
+  entry: 日鉄エンジニアリング
+  source: uploaded_docx
+  company: 日鉄エンジニアリング
+  categories:
+  - it
+  official_url: null
+- score: 64
+  entry: JFEエンジニアリング
+  source: uploaded_docx
+  company: JFEエンジニアリング
+  categories:
+  - it
+  official_url: null
+- score: 64
+  entry: サイバーエージェント(エンジニア)
+  source: uploaded_docx
+  company: サイバーエージェント
+  categories:
+  - it
+  official_url: https://www.cyberagent.co.jp/careers/students/
+- score: 64
+  entry: 新生銀行(エンジニア)
+  source: uploaded_docx
+  company: SBI新生銀行
+  categories:
+  - it
+  official_url: https://www.sbishinseibank.co.jp/recruit/newgraduate/
+- score: 64
+  entry: エムスリー(エンジニア)
+  source: uploaded_docx
+  company: エムスリー
+  categories:
+  - it
+  official_url: https://jobs.m3.com/newgraduate/
+- score: 64
+  entry: 関西電力
+  source: uploaded_docx
+  company: 関西電力
+  categories: []
+  official_url: null
+- score: 64
+  entry: 川崎汽船
+  source: uploaded_docx
+  company: 川崎汽船
+  categories: []
+  official_url: null
+- score: 64
+  entry: クボタ
+  source: uploaded_docx
+  company: クボタ
+  categories: []
+  official_url: null
+- score: 64
+  entry: 小松製作所*コマツ*
+  source: uploaded_docx
+  company: 小松製作所
+  categories: []
+  official_url: null
+- score: 64
+  entry: 中部電力(原子力)
+  source: uploaded_docx
+  company: 中部電力
+  categories: []
+  official_url: null
+- score: 64
+  entry: アサヒビール(技術開発)
+  source: uploaded_docx
+  company: アサヒビール
+  categories: []
+  official_url: null
+- score: 64
+  entry: 日清食品(R&D)
+  source: uploaded_docx
+  company: 日清食品
+  categories:
+  - it
+  official_url: null
+- score: 64
+  entry: 鹿島建設(設計)
+  source: uploaded_docx
+  company: 鹿島建設
+  categories: []
+  official_url: null
+- score: 64
+  entry: SBI(エンジニア)
+  source: uploaded_docx
+  company: SBIホールディングス
+  categories:
+  - it
+  official_url: null
+- score: 64
+  entry: Sansan(エンジニア)
+  source: uploaded_docx
+  company: Sansan
+  categories:
+  - it
+  official_url: https://jp.corp-sansan.com/newgrads/
+- score: 64
+  entry: マネーフォワード(エンジニア)
+  source: uploaded_docx
+  company: マネーフォワード
+  categories:
+  - it
+  official_url: https://recruit.moneyforward.com/newgraduate/
+- score: 64
+  entry: ADK(DS)
+  source: uploaded_docx
+  company: ADK
+  categories:
+  - it
+  official_url: null
+- score: 64
+  entry: りそな銀行(DS)
+  source: uploaded_docx
+  company: りそな銀行
+  categories:
+  - it
+  official_url: https://www.resona-saiyo.com/
+- score: 64
+  entry: 横浜銀行(DS)
+  source: uploaded_docx
+  company: 横浜銀行
+  categories:
+  - it
+  official_url: https://boy-recruit.yokohama/
+- score: 64
+  entry: ファーストリテイリング(IT関連)
+  source: uploaded_docx
+  company: ファーストリテイリング
+  categories:
+  - it
+  official_url: https://www.fastretailing.com/employment/ja/graduate/
+- score: 63
+  entry: 日立製作所(SE)
+  source: uploaded_docx
+  company: 日立製作所
+  categories:
+  - it
+  official_url: https://www.hitachi.co.jp/recruit/newgraduate/
+- score: 63
+  entry: 三菱ケミカル(生産技術)
+  source: uploaded_docx
+  company: 三菱ケミカル
+  categories: []
+  official_url: null
+- score: 63
+  entry: GMO(エンジニア)
+  source: uploaded_docx
+  company: GMO
+  categories:
+  - it
+  official_url: https://recruit.gmo.jp/newgraduate/
+- score: 63
+  entry: ジャストシステム(企画開発エンジニア)
+  source: uploaded_docx
+  company: ジャストシステム
+  categories:
+  - it
+  official_url: https://www.justsystems.com/jp/recruit/fresh/
+- score: 63
+  entry: シーメンス(理系職)
+  source: uploaded_docx
+  company: シーメンス
+  categories: []
+  official_url: https://www.siemens.com/jp/ja/company/jobs.html
+- score: 63
+  entry: 日産
+  source: uploaded_docx
+  company: 日産
+  categories: []
+  official_url: null
+- score: 63
+  entry: JR東日本(総合職)
+  source: uploaded_docx
+  company: JR東日本
+  categories: []
+  official_url: null
+- score: 63
+  entry: 東京メトロ(総合職)
+  source: uploaded_docx
+  company: 東京メトロ
+  categories: []
+  official_url: null
+- score: 63
+  entry: 小田急(総合職)
+  source: uploaded_docx
+  company: 小田急
+  categories: []
+  official_url: null
+- score: 63
+  entry: Panasonic(設計開発)
+  source: uploaded_docx
+  company: パナソニック
+  categories: []
+  official_url: https://recruit.jpn.panasonic.com/newgrads/
+- score: 63
+  entry: 川崎重工(設計・開発)
+  source: uploaded_docx
+  company: 川崎重工
+  categories: []
+  official_url: null
+- score: 63
+  entry: 中部電力(開発職)
+  source: uploaded_docx
+  company: 中部電力
+  categories: []
+  official_url: null
+- score: 63
+  entry: 東邦ガス
+  source: uploaded_docx
+  company: 東邦ガス
+  categories: []
+  official_url: null
+- score: 63
+  entry: 東急
+  source: uploaded_docx
+  company: 東急
+  categories: []
+  official_url: null
+- score: 63
+  entry: 阪急阪神HD
+  source: uploaded_docx
+  company: 阪急阪神HD
+  categories: []
+  official_url: null
+- score: 63
+  entry: 首都高速
+  source: uploaded_docx
+  company: 首都高速
+  categories: []
+  official_url: null
+- score: 63
+  entry: 近鉄GHD(情報総合)
+  source: uploaded_docx
+  company: 近鉄GHD
+  categories: []
+  official_url: null
+- score: 63
+  entry: NHK(技術)
+  source: uploaded_docx
+  company: NHK
+  categories: []
+  official_url: https://www.nhk.or.jp/saiyo/
+- score: 63
+  entry: ダイキン
+  source: uploaded_docx
+  company: ダイキン
+  categories: []
+  official_url: null
+- score: 63
+  entry: アサヒ飲料(生産研究)
+  source: uploaded_docx
+  company: アサヒ飲料
+  categories: []
+  official_url: null
+- score: 63
+  entry: カゴメ(総合職 食品安全評価・食健康)
+  source: uploaded_docx
+  company: カゴメ
+  categories: []
+  official_url: null
+- score: 63
+  entry: サッポロ(技術系総合職 生物・化学系)
+  source: uploaded_docx
+  company: サッポロ
+  categories: []
+  official_url: null
+- score: 63
+  entry: キッコーマン(製造)
+  source: uploaded_docx
+  company: キッコーマン
+  categories: []
+  official_url: null
+- score: 63
+  entry: ライオン
+  source: uploaded_docx
+  company: ライオン
+  categories: []
+  official_url: null
+- score: 63
+  entry: ボッシュ
+  source: uploaded_docx
+  company: ボッシュ
+  categories: []
+  official_url: null
+- score: 63
+  entry: ブリヂストン
+  source: uploaded_docx
+  company: ブリヂストン
+  categories: []
+  official_url: null
+- score: 63
+  entry: ユニ・チャーム
+  source: uploaded_docx
+  company: ユニ・チャーム
+  categories: []
+  official_url: null
+- score: 63
+  entry: KOSE
+  source: uploaded_docx
+  company: KOSE
+  categories: []
+  official_url: null
+- score: 63
+  entry: 島津製作所
+  source: uploaded_docx
+  company: 島津製作所
+  categories: []
+  official_url: null
+- score: 63
+  entry: JX金属(技術総合職)
+  source: uploaded_docx
+  company: JX金属
+  categories:
+  - it
+  official_url: null
+- score: 63
+  entry: シマノ
+  source: uploaded_docx
+  company: シマノ
+  categories: []
+  official_url: null
+- score: 63
+  entry: レゾナック
+  source: uploaded_docx
+  company: レゾナック
+  categories: []
+  official_url: null
+- score: 63
+  entry: 帝人
+  source: uploaded_docx
+  company: 帝人
+  categories: []
+  official_url: null
+- score: 63
+  entry: 田辺三菱
+  source: uploaded_docx
+  company: 田辺三菱
+  categories: []
+  official_url: null
+- score: 63
+  entry: JAL(技術総合)
+  source: uploaded_docx
+  company: JAL
+  categories:
+  - it
+  official_url: https://www.job-jal.com/
+- score: 63
+  entry: ANA(技術総合)
+  source: uploaded_docx
+  company: ANA
+  categories:
+  - it
+  official_url: https://www.ana.co.jp/group/recruit/ana-recruit/
+- score: 63
+  entry: NTTドコモ(オープン)
+  source: uploaded_docx
+  company: NTTドコモ
+  categories:
+  - it
+  official_url: https://information.nttdocomo-fresh.jp/
+- score: 63
+  entry: jera(TE)
+  source: uploaded_docx
+  company: JERA
+  categories: []
+  official_url: https://www.jera.co.jp/recruit/newgraduate
+- score: 63
+  entry: ENEOS(製造)
+  source: uploaded_docx
+  company: ENEOS
+  categories: []
+  official_url: null
+- score: 63
+  entry: 本田(開発職)
+  source: uploaded_docx
+  company: 本田技研工業
+  categories: []
+  official_url: null
+zip_company_names:
+- BCC
+- EY
+- Future
+- GMO
+- IBM
+- JSOL
+- KPMG
+- MRI
+- MUFG_consul
+- NRI
+- NTT
+- OBIC
+- Point72
+- PwC
+- SCGM
+- Simplex
+- TIS
+- acaric
+- accenture
+- bain&company
+- capgemini
+- daiichiseimei
+- goldman
+- moneyforward
+- mutb
+- nihonseimei
+- nissannkagaku
+- nittetsu
+- nssolutions
+- redgelinez
+- revamp
+- yamatosoken
+- πé½πâ╝πâïπâ╝

@@ -1,0 +1,105 @@
+{
+  "updated_at": "2026-08-19T11:33:24.983887+00:00",
+  "targets": {
+    "google-it-75-google-softwareengineer": {
+      "target_id": "google-it-75-google-softwareengineer",
+      "company": "Google",
+      "category": "it",
+      "url": "https://www.google.com/about/careers/applications/jobs/results/?location=Japan",
+      "status": "closed_or_unknown",
+      "score": 0,
+      "reasons": [
+        "DeepSeek判定信頼度: 0%",
+        "対象職種: IT, システム, エンジニア",
+        "個別条件: エンジニア, IT, デジタル",
+        "ページ本文は経験者向け求人のみで、新卒採用やインターン、オープンカンパニーの情報は確認できない。"
+      ],
+      "excerpt": "Googleの求人検索ページには58件の経験者向けポジションが表示されているが、新卒採用、インターン、オープンカンパニーに関する情報は見当たらない。",
+      "content_hash": "ea147d61af7327a1ee7e2f16589354861589607258acef0fde6d1ac1f916ca55",
+      "checked_at": "2026-08-19T11:32:59.182245+00:00",
+      "deadline": null,
+      "program_type": "unknown",
+      "ai_used": true,
+      "error": null
+    },
+    "apple-it-75-apple": {
+      "target_id": "apple-it-75-apple",
+      "company": "Apple",
+      "category": "it",
+      "url": "https://jobs.apple.com/ja-jp/search?location=japan-JPNC",
+      "status": "open",
+      "score": 7,
+      "reasons": [
+        "DeepSeek判定信頼度: 7%",
+        "Appleの求人ページには現在募集中の職種が多数掲載されており、28卒向けのインターン・オープンカンパニー・本選考の区分が明確でないが、応募可能なポジションが存在する",
+        "掲載職種に「短期」「パートタイム」などの表記があり、学生向けプログラムの可能性がある"
+      ],
+      "excerpt": "Appleの日本採用ページには62件の求人が掲載されており、直営店スタッフやコーポレート職など多岐にわたる。応募可能なポジションが含まれるが、新卒採用に特化した記載ではない。",
+      "content_hash": "f25b6e86f174687d212df4711b68b947938da9fd2364753b2cfc44e4dcf7426a",
+      "checked_at": "2026-08-19T11:33:05.079888+00:00",
+      "deadline": null,
+      "program_type": "unknown",
+      "ai_used": true,
+      "error": null
+    },
+    "meta-it-75-meta": {
+      "target_id": "meta-it-75-meta",
+      "company": "Meta",
+      "category": "it",
+      "url": "https://www.metacareers.com/jobs/",
+      "status": "closed_or_unknown",
+      "score": 0,
+      "reasons": [
+        "DeepSeek判定信頼度: 0%",
+        "個別条件が未検出"
+      ],
+      "excerpt": "対象卒年、企業、分野の条件に合致する募集情報が見つからない",
+      "content_hash": "8a03d49bc31595d987fde3d70775e742e00481284db70b20b215f825ff20decf",
+      "checked_at": "2026-08-19T11:33:11.491413+00:00",
+      "deadline": null,
+      "program_type": "unknown",
+      "ai_used": true,
+      "error": null
+    },
+    "amazon-it-75-amazon-sde": {
+      "target_id": "amazon-it-75-amazon-sde",
+      "company": "Amazon",
+      "category": "it",
+      "url": "https://www.amazon.jobs/content/jp/career-programs/university",
+      "status": "open",
+      "score": 0,
+      "reasons": [
+        "DeepSeek判定信頼度: 0%",
+        "対象職種: IT, システム, エンジニア",
+        "募集語句: 新卒採用, インターン, インターンシップ",
+        "個別条件: エンジニア, IT, システム"
+      ],
+      "excerpt": "Amazon Japanの新卒採用ページで、Tech（技術職）やインターンシップの案内がある。2026・2027年卒向けの記載があるが、2028年卒向けの明確な記載はない。ただし、現在応募可能なインターン情報が含まれる。",
+      "content_hash": "c25865805279499b172672d41dee2e3c6e3e7ec66b0ca4903c85c8de85140a93",
+      "checked_at": "2026-08-19T11:33:15.503341+00:00",
+      "deadline": null,
+      "program_type": "internship",
+      "ai_used": true,
+      "error": null
+    },
+    "indeed-it-75-indeed": {
+      "target_id": "indeed-it-75-indeed",
+      "company": "Indeed",
+      "category": "it",
+      "url": "https://jp.indeed.com/career",
+      "status": "closed_or_unknown",
+      "score": 0,
+      "reasons": [
+        "DeepSeek判定信頼度: 0%",
+        "個別条件が未検出"
+      ],
+      "excerpt": "給料・年収ガイドのページであり、新卒採用情報は掲載されていない。",
+      "content_hash": "19f23f144ad1fd7e49de38ecebc2357c3feb946b946596c56ff7151ab8320d8f",
+      "checked_at": "2026-08-19T11:33:20.999811+00:00",
+      "deadline": null,
+      "program_type": "unknown",
+      "ai_used": true,
+      "error": null
+    }
+  }
+}

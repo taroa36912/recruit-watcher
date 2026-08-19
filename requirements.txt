@@ -1,0 +1,7 @@
+requests>=2.32,<3
+beautifulsoup4>=4.12,<5
+PyYAML>=6.0,<7
+python-dotenv>=1.0,<2
+
+# macOS標準Python 3.9 + LibreSSLでも警告なく動かすため
+urllib3>=1.26.18,<2
