@@ -2,8 +2,11 @@ name: Daily recruitment check
 
 on:
   schedule:
-    # GitHub ActionsはUTC。JST 08:15 = UTC 23:15（前日）
-    - cron: "15 23 * * *"
+    # 日本時間 08:15 に毎日実行
+    - cron: "15 8 * * *"
+      timezone: "Asia/Tokyo"
+
+  # GitHub上から手動実行するため
   workflow_dispatch:
 
 permissions:
@@ -12,13 +15,22 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Create .env from GitHub Secrets
         run: |
           cat > .env <<'ENVEOF'
@@ -26,16 +38,26 @@ jobs:
           DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_MODEL=deepseek-v4-pro
           DEEPSEEK_BASE_URL=https://api.deepseek.com
+          DEEPSEEK_ENABLED=true
           GRADUATION_YEAR=2028
-          DEEPSEEK_MAX_PAGE_CHARS=18000
+          DEEPSEEK_MAX_PAGE_CHARS=12000
           ENVEOF
+
       - name: Check all recruitment categories
-        run: python src/checker.py
-      - name: Commit state
+        run: |
+          python src/checker.py
+
+      - name: Commit updated state
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add data/state.json
-          git diff --cached --quiet || git commit -m "chore: update recruitment watch state"
-          git push
+
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update recruitment watch state"
+            git push
+          else
+            echo "No state changes to commit."
+          fi
