@@ -6,10 +6,12 @@ settings:
   notify_posting_types:
   - internship
   - newgrad
+  - open_company
   notify_unknown_posting_type: true
   max_discord_items: 40
   require_deepseek: true
   deepseek_timeout_seconds: 90
+  error_rate_fail_threshold: 0.3
   positive_keywords:
   - 28卒
   - 2028年卒
@@ -82,7 +84,7 @@ settings:
 ai:
   max_chars_per_target: 6000
   max_total_chars: 200000
-  max_tokens: 8192
+  max_tokens: 16384
 targets:
 - id: google-it-75-google-softwareengineer
   company: Google
@@ -525,7 +527,7 @@ targets:
   score: 71
   category: trader
   tier: major
-  url: https://www.mizuho-fg.co.jp/saiyou/recruit/
+  url: https://www.mizuho-fg.co.jp/saiyou/group/index.html
   enabled: true
   required_any:
   - トレーダー

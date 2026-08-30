@@ -38,6 +38,14 @@ RECRUIT_KEYWORDS = [
 ]
 
 
+class TruncatedResponseError(RuntimeError):
+    """DeepSeekの出力がmax_tokensで打ち切られた（finish_reason=length）ことを表す。"""
+
+    def __init__(self, item_count: int):
+        super().__init__(f"DeepSeek出力が打ち切られました (finish_reason=length, {item_count}件)")
+        self.item_count = item_count
+
+
 @dataclass
 class Result:
     target_id: str
@@ -97,9 +105,17 @@ def load_state() -> Dict[str, Any]:
 def save_state(results: List[Result]) -> None:
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     old = load_state().get("targets", {})
+    now = datetime.now(timezone.utc).isoformat()
     for r in results:
-        old[r.target_id] = asdict(r)
-    payload = {"updated_at": datetime.now(timezone.utc).isoformat(), "targets": old}
+        if r.status == "error":
+            # エラー結果で既存の良好な状態を上書きしない。既存エントリが無ければ何も書かない。
+            if r.target_id not in old:
+                continue
+            old[r.target_id]["last_error"] = r.error
+            old[r.target_id]["last_error_at"] = now
+        else:
+            old[r.target_id] = asdict(r)
+    payload = {"updated_at": now, "targets": old}
     STATE_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
@@ -107,7 +123,7 @@ def map_program_type_to_posting_type(program_type: Optional[str]) -> str:
     mapping = {
         "internship": "internship",
         "selection": "newgrad",
-        "open_company": "other",
+        "open_company": "open_company",
         "unknown": "unknown",
     }
     return mapping.get(program_type or "", "unknown")
@@ -128,6 +144,11 @@ def migrate_state() -> None:
     for value in targets.values():
         if isinstance(value, dict) and "posting_type" not in value and "program_type" in value:
             value["posting_type"] = map_program_type_to_posting_type(value.get("program_type"))
+            changed = True
+    # 過去の誤マッピング（open_company -> other）の一時修正
+    for value in targets.values():
+        if isinstance(value, dict) and value.get("posting_type") == "other" and value.get("program_type") == "open_company":
+            value["posting_type"] = "open_company"
             changed = True
     if not changed:
         return
@@ -287,14 +308,18 @@ def build_payload(items: List[Dict[str, Any]], settings: Dict[str, Any], ai_sett
         "与えられたJSON配列の各候補について、ページ本文だけを根拠に判定してください。"
         "説明文やMarkdownコードブロックは付けず、JSONオブジェクトを1つだけ返してください。\n"
         "判定基準:\n"
-        "- is_open: 現在応募可能なインターン・オープンカンパニー・本選考（新卒）が掲載されていれば true、"
-        "過年度・終了済み・会社説明のみなら false。\n"
-        "- posting_type: internship（インターン）/ newgrad（新卒本選考）/ midcareer（中途）/ other（その他）/ unknown（判定不能）のいずれか。\n"
+        "- is_open: 応募・エントリーの受付が現在開いていれば true。"
+        "募集が終了している、過年度の情報しかない、日程未定の告知のみ、"
+        "またはエントリー窓口が存在しない会社紹介ページであれば false。"
+        "プログラムの内容や規模は is_open の判断に使わず、posting_type で表現してください。\n"
+        "- posting_type: internship（インターン）/ open_company（オープンカンパニー）/ newgrad（新卒本選考）/ midcareer（中途）/ other（その他）/ unknown（判定不能）のいずれか。"
+        "1日または半日の仕事体験・オープンカンパニー・会社説明型のプログラムは open_company、複数日または就業型のプログラムは internship、新卒本選考のエントリー受付は newgrad と判定してください。\n"
         "- deadline: 応募締切が不明なら null。\n"
         "- confidence: 判定の確信度を 0.0〜1.0 の小数で。\n"
         "\n出力形式:\n"
         '{"results": [{"id": "...", "is_open": true, "posting_type": "internship", "title": "...", "deadline": "...", "confidence": 0.0, "reason": "..."}]}\n'
         "各入力idに対して結果を必ず1件だけ返し、idは入力値をそのまま出力してください。"
+        "1つの応答に多数の候補が含まれるため簡潔さが重要です。reason は全角40文字以内、title は全角30文字以内とし、いずれも改行を含めないでください。"
     )
     user_content = json.dumps(items, ensure_ascii=False)
     return {
@@ -341,13 +366,18 @@ def deepseek_post_chunk(
             choices = data.get("choices") or []
             if not choices:
                 raise RuntimeError(f"DeepSeek応答にchoicesがありません: {str(data)[:700]}")
-            content = (choices[0].get("message") or {}).get("content")
+            choice = choices[0]
+            finish_reason = choice.get("finish_reason")
+            content = (choice.get("message") or {}).get("content")
+            if finish_reason == "length":
+                raise TruncatedResponseError(len(items))
             if not content or not str(content).strip():
-                finish_reason = choices[0].get("finish_reason")
                 raise RuntimeError(f"DeepSeekが空のcontentを返しました (finish_reason={finish_reason})")
 
             parsed = extract_json_object(str(content))
             return parsed, data.get("usage")
+        except TruncatedResponseError:
+            raise
         except (requests.RequestException, ValueError, KeyError, TypeError, RuntimeError, json.JSONDecodeError) as exc:
             last_error = exc
             if attempt < 3:
@@ -402,25 +432,42 @@ def deepseek_classify_batch(
 
     max_total = int(ai_settings.get("max_total_chars", 200000))
     chunks = build_batch_chunks(items, max_total)
-    stats: Dict[str, Any] = {"posts": 0, "total_chars": 0, "latency_seconds": 0.0, "usage": {}}
+    stats: Dict[str, Any] = {"posts": 0, "total_chars": 0, "latency_seconds": 0.0, "usage": {}, "truncated_splits": 0}
     start = time.time()
 
     mapping: Dict[str, Dict[str, Any]] = {}
     missing: List[Dict[str, Any]] = []
-    for chunk in chunks:
+
+    def process_chunk(chunk: List[Dict[str, Any]]) -> None:
         stats["total_chars"] += chunk_chars(chunk)
         try:
             parsed, usage = post_fn(chunk)
+        except TruncatedResponseError:
+            if len(chunk) == 1:
+                item = chunk[0]
+                log.warning("DeepSeek出力が打ち切られたため単一アイテムを不明として扱います: %s", item["id"])
+                mapping[str(item["id"])] = {"id": item["id"], "is_open": "unknown", "posting_type": "unknown", "missing": True}
+                return
+            mid = len(chunk) // 2
+            left, right = chunk[:mid], chunk[mid:]
+            stats["truncated_splits"] = stats["truncated_splits"] + 1
+            log.warning("DeepSeek出力が打ち切られたためチャンクを分割します: %d件 -> %d件/%d件", len(chunk), len(left), len(right))
+            process_chunk(left)
+            process_chunk(right)
+            return
         except Exception as exc:
             for item in chunk:
                 mapping[str(item["id"])] = {"id": item["id"], "error": str(exc)}
-            continue
+            return
         merge_usage(stats["usage"], usage)
         chunk_map = parse_batch_results(parsed)
         mapping.update(chunk_map)
         for item in chunk:
             if str(item["id"]) not in chunk_map:
                 missing.append(item)
+
+    for chunk in chunks:
+        process_chunk(chunk)
 
     # 成功応答にidが欠落していた場合、不足分だけ一度だけ再要求する。
     if missing:
@@ -600,7 +647,7 @@ def posting_type_notifiable(posting_type: Optional[str], notify_posting_types: L
 
 
 def discord_post(results: List[Result], webhook_url: str, max_items: int, labels: Dict[str, str]) -> None:
-    posting_labels = {"internship": "インターン", "newgrad": "本選考", "midcareer": "中途", "other": "その他", "unknown": "不明"}
+    posting_labels = {"internship": "インターン", "newgrad": "本選考", "open_company": "オープンカンパニー", "midcareer": "中途", "other": "その他", "unknown": "不明"}
     for chunk_start in range(0, min(len(results), max_items), 10):
         embeds = []
         for r in results[chunk_start:chunk_start + 10]:
@@ -786,6 +833,13 @@ def main() -> int:
     )
 
     error_count = sum(1 for r in results if r.status == "error")
+    error_threshold = float(settings.get("error_rate_fail_threshold", 0.3))
+    if results and error_count / len(results) > error_threshold:
+        log.error(
+            "%d/%d件がエラーのため異常終了します（しきい値 %.0f%%）",
+            error_count, len(results), error_threshold * 100,
+        )
+        return 1
     if error_count:
         log.warning(
             "%d件の取得・判定エラーがありましたが、他の監視対象は正常に処理されたため実行を継続します。",
