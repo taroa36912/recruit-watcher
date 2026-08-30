@@ -6,7 +6,7 @@ on:
     - cron: "15 8 * * *"
       timezone: "Asia/Tokyo"
 
-  # GitHub上から手動実行するため（プロファイル／カテゴリを上書き可能）
+  # GitHub上から手動実行するため（プロファイル／カテゴリ／通知有無を上書き可能）
   workflow_dispatch:
     inputs:
       profile:
@@ -17,13 +17,24 @@ on:
         description: "カテゴリをカンマ区切りで上書き（例: quant,actuary）"
         required: false
         default: ""
+      no_discord:
+        description: "Discordへ送信しない（判定とstate更新のみ）"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
+# state.json をコミットバックするため、実行を直列化する。
+# cron と手動実行が重なると push が衝突するため cancel はしない。
+concurrency:
+  group: recruit-watcher
+  cancel-in-progress: false
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repository
@@ -55,12 +66,33 @@ jobs:
         env:
           PROFILE: ${{ inputs.profile || 'daily' }}
           CATEGORIES: ${{ inputs.categories }}
+          NO_DISCORD: ${{ inputs.no_discord && '--no-discord' || '' }}
         run: |
+          set -o pipefail
+          # --category はプロファイルのカテゴリ一覧のみを上書きする。
+          # notify_posting_types を効かせるため --profile と併用する。
+          ARGS="--profile $PROFILE"
           if [ -n "$CATEGORIES" ]; then
-            python src/checker.py --category "$CATEGORIES"
-          else
-            python src/checker.py --profile "$PROFILE"
+            ARGS="$ARGS --category $CATEGORIES"
           fi
+          python src/checker.py $ARGS $NO_DISCORD 2>&1 | tee run.log
+
+      - name: Write run summary
+        if: always()
+        run: |
+          {
+            echo "## 実行サマリ"
+            echo ""
+            echo '```'
+            grep -E "取得:|通知候補|分割|エラーのため|件の取得・判定エラー" run.log || echo "サマリ行が見つかりませんでした"
+            echo '```'
+            echo ""
+            echo "### 取得・判定エラー"
+            echo ""
+            echo '```'
+            grep " error score=0" run.log || echo "エラーなし"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit updated state
         if: always()
@@ -72,6 +104,8 @@ jobs:
 
           if ! git diff --cached --quiet; then
             git commit -m "chore: update recruitment watch state"
+            # 手動実行と cron が近接した場合に push が弾かれないようにする
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push
           else
             echo "No state changes to commit."

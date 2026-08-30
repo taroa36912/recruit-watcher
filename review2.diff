@@ -1,0 +1,500 @@
+diff --git a/README.md b/README.md
+index 36d2bb0..f67ff35 100644
+--- a/README.md
++++ b/README.md
+@@ -77,12 +77,14 @@ python src/checker.py --limit 10 --no-ai --no-discord
+ ./scripts/run_mac.sh --profile daily --dry-run
+ ```
+ 
++応答が `max_tokens` で打ち切られた（`finish_reason=length`）場合は、同じバッチを丸ごと再送せず、チャンクを再帰的に半分ずつに分割して再試行します。分割しても打ち切られる単一アイテムは「不明」として記録されます。
++
+ ## カテゴリと募集種別
+ 
+ - カテゴリは `config/categories.yaml` の `categories` が唯一の定義元です。
+   - `actuary`（アクチュアリー）、`quant`（クオンツ）、`asset_management`（資産運用）、`data_science`（データサイエンス）、`trader`（トレーダー）、`research`（研究職）、`it`（IT/SIer）、`consulting`（コンサル）
+   - スケジュール実行（`--profile daily`）は先頭6カテゴリのみを対象にします。`it` / `consulting` は手動実行専用です。
+-- 募集種別（`posting_type`）は `internship` / `newgrad` / `midcareer` / `other` / `unknown` の5種です。
++- 募集種別（`posting_type`）は `internship` / `open_company` / `newgrad` / `midcareer` / `other` / `unknown` の6種です。
+ 
+ ## 設定ファイル
+ 
+@@ -98,11 +100,12 @@ python src/checker.py --limit 10 --no-ai --no-discord
+ 
+ | キー | 既定値 | 説明 |
+ | --- | --- | --- |
+-| `settings.notify_posting_types` | `[internship, newgrad]` | 通知する募集種別（プロファイル側で上書き可能） |
++| `settings.notify_posting_types` | `[internship, newgrad, open_company]` | 通知する募集種別（プロファイル側で上書き可能） |
+ | `settings.notify_unknown_posting_type` | `true` | 判定不能な募集種別を通知するか。見逃しを避けるため既定は true |
++| `settings.error_rate_fail_threshold` | `0.3` | 実行結果のうちエラーがこの割合を超えたら異常終了する（例: 0.3=30%） |
+ | `ai.max_chars_per_target` | `6000` | 1 target あたりに切り詰める本文の最大文字数 |
+ | `ai.max_total_chars` | `200000` | バッチ1回の最大文字数。超えたら最小個数に分割 |
+-| `ai.max_tokens` | `8192` | DeepSeek の応答トークン上限 |
++| `ai.max_tokens` | `16384` | DeepSeek の応答トークン上限 |
+ 
+ ## コマンド一覧
+ 
+diff --git a/config/categories.yaml b/config/categories.yaml
+index cfbeccd..2c22d13 100644
+--- a/config/categories.yaml
++++ b/config/categories.yaml
+@@ -13,6 +13,7 @@ categories:
+ # DeepSeek分類が返す募集種別 (posting_type)
+ posting_types:
+   internship: インターンシップ
++  open_company: オープンカンパニー
+   newgrad: 本選考（新卒）
+   midcareer: 中途採用
+   other: その他
+@@ -22,4 +23,4 @@ posting_types:
+ profiles:
+   daily:
+     categories: [actuary, quant, asset_management, data_science, trader, research]
+-    notify_posting_types: [internship, newgrad]
++    notify_posting_types: [internship, newgrad, open_company]
+diff --git a/config/targets.yaml b/config/targets.yaml
+index 3c742f5..a7b3ab6 100644
+--- a/config/targets.yaml
++++ b/config/targets.yaml
+@@ -6,10 +6,12 @@ settings:
+   notify_posting_types:
+   - internship
+   - newgrad
++  - open_company
+   notify_unknown_posting_type: true
+   max_discord_items: 40
+   require_deepseek: true
+   deepseek_timeout_seconds: 90
++  error_rate_fail_threshold: 0.3
+   positive_keywords:
+   - 28卒
+   - 2028年卒
+@@ -82,7 +84,7 @@ settings:
+ ai:
+   max_chars_per_target: 6000
+   max_total_chars: 200000
+-  max_tokens: 8192
++  max_tokens: 16384
+ targets:
+ - id: google-it-75-google-softwareengineer
+   company: Google
+diff --git a/src/checker.py b/src/checker.py
+index 3ba6941..fc68a4c 100644
+--- a/src/checker.py
++++ b/src/checker.py
+@@ -38,6 +38,14 @@ RECRUIT_KEYWORDS = [
+ ]
+ 
+ 
++class TruncatedResponseError(RuntimeError):
++    """DeepSeekの出力がmax_tokensで打ち切られた（finish_reason=length）ことを表す。"""
++
++    def __init__(self, item_count: int):
++        super().__init__(f"DeepSeek出力が打ち切られました (finish_reason=length, {item_count}件)")
++        self.item_count = item_count
++
++
+ @dataclass
+ class Result:
+     target_id: str
+@@ -97,9 +105,17 @@ def load_state() -> Dict[str, Any]:
+ def save_state(results: List[Result]) -> None:
+     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+     old = load_state().get("targets", {})
++    now = datetime.now(timezone.utc).isoformat()
+     for r in results:
+-        old[r.target_id] = asdict(r)
+-    payload = {"updated_at": datetime.now(timezone.utc).isoformat(), "targets": old}
++        if r.status == "error":
++            # エラー結果で既存の良好な状態を上書きしない。既存エントリが無ければ何も書かない。
++            if r.target_id not in old:
++                continue
++            old[r.target_id]["last_error"] = r.error
++            old[r.target_id]["last_error_at"] = now
++        else:
++            old[r.target_id] = asdict(r)
++    payload = {"updated_at": now, "targets": old}
+     STATE_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+ 
+ 
+@@ -107,7 +123,7 @@ def map_program_type_to_posting_type(program_type: Optional[str]) -> str:
+     mapping = {
+         "internship": "internship",
+         "selection": "newgrad",
+-        "open_company": "other",
++        "open_company": "open_company",
+         "unknown": "unknown",
+     }
+     return mapping.get(program_type or "", "unknown")
+@@ -129,6 +145,11 @@ def migrate_state() -> None:
+         if isinstance(value, dict) and "posting_type" not in value and "program_type" in value:
+             value["posting_type"] = map_program_type_to_posting_type(value.get("program_type"))
+             changed = True
++    # 過去の誤マッピング（open_company -> other）の一時修正
++    for value in targets.values():
++        if isinstance(value, dict) and value.get("posting_type") == "other" and value.get("program_type") == "open_company":
++            value["posting_type"] = "open_company"
++            changed = True
+     if not changed:
+         return
+     if not STATE_BAK_PATH.exists():
+@@ -289,12 +310,14 @@ def build_payload(items: List[Dict[str, Any]], settings: Dict[str, Any], ai_sett
+         "判定基準:\n"
+         "- is_open: 現在応募可能なインターン・オープンカンパニー・本選考（新卒）が掲載されていれば true、"
+         "過年度・終了済み・会社説明のみなら false。\n"
+-        "- posting_type: internship（インターン）/ newgrad（新卒本選考）/ midcareer（中途）/ other（その他）/ unknown（判定不能）のいずれか。\n"
++        "- posting_type: internship（インターン）/ open_company（オープンカンパニー）/ newgrad（新卒本選考）/ midcareer（中途）/ other（その他）/ unknown（判定不能）のいずれか。"
++        "1日または半日の仕事体験・オープンカンパニー・会社説明型のプログラムは open_company、複数日または就業型のプログラムは internship、新卒本選考のエントリー受付は newgrad と判定してください。\n"
+         "- deadline: 応募締切が不明なら null。\n"
+         "- confidence: 判定の確信度を 0.0〜1.0 の小数で。\n"
+         "\n出力形式:\n"
+         '{"results": [{"id": "...", "is_open": true, "posting_type": "internship", "title": "...", "deadline": "...", "confidence": 0.0, "reason": "..."}]}\n'
+         "各入力idに対して結果を必ず1件だけ返し、idは入力値をそのまま出力してください。"
++        "1つの応答に多数の候補が含まれるため簡潔さが重要です。reason は全角40文字以内、title は全角30文字以内とし、いずれも改行を含めないでください。"
+     )
+     user_content = json.dumps(items, ensure_ascii=False)
+     return {
+@@ -341,13 +364,18 @@ def deepseek_post_chunk(
+             choices = data.get("choices") or []
+             if not choices:
+                 raise RuntimeError(f"DeepSeek応答にchoicesがありません: {str(data)[:700]}")
+-            content = (choices[0].get("message") or {}).get("content")
++            choice = choices[0]
++            finish_reason = choice.get("finish_reason")
++            content = (choice.get("message") or {}).get("content")
++            if finish_reason == "length":
++                raise TruncatedResponseError(len(items))
+             if not content or not str(content).strip():
+-                finish_reason = choices[0].get("finish_reason")
+                 raise RuntimeError(f"DeepSeekが空のcontentを返しました (finish_reason={finish_reason})")
+ 
+             parsed = extract_json_object(str(content))
+             return parsed, data.get("usage")
++        except TruncatedResponseError:
++            raise
+         except (requests.RequestException, ValueError, KeyError, TypeError, RuntimeError, json.JSONDecodeError) as exc:
+             last_error = exc
+             if attempt < 3:
+@@ -402,19 +430,33 @@ def deepseek_classify_batch(
+ 
+     max_total = int(ai_settings.get("max_total_chars", 200000))
+     chunks = build_batch_chunks(items, max_total)
+-    stats: Dict[str, Any] = {"posts": 0, "total_chars": 0, "latency_seconds": 0.0, "usage": {}}
++    stats: Dict[str, Any] = {"posts": 0, "total_chars": 0, "latency_seconds": 0.0, "usage": {}, "truncated_splits": 0}
+     start = time.time()
+ 
+     mapping: Dict[str, Dict[str, Any]] = {}
+     missing: List[Dict[str, Any]] = []
+-    for chunk in chunks:
++
++    def process_chunk(chunk: List[Dict[str, Any]]) -> None:
+         stats["total_chars"] += chunk_chars(chunk)
+         try:
+             parsed, usage = post_fn(chunk)
++        except TruncatedResponseError:
++            if len(chunk) == 1:
++                item = chunk[0]
++                log.warning("DeepSeek出力が打ち切られたため単一アイテムを不明として扱います: %s", item["id"])
++                mapping[str(item["id"])] = {"id": item["id"], "is_open": "unknown", "posting_type": "unknown", "missing": True}
++                return
++            mid = len(chunk) // 2
++            left, right = chunk[:mid], chunk[mid:]
++            stats["truncated_splits"] = stats["truncated_splits"] + 1
++            log.warning("DeepSeek出力が打ち切られたためチャンクを分割します: %d件 -> %d件/%d件", len(chunk), len(left), len(right))
++            process_chunk(left)
++            process_chunk(right)
++            return
+         except Exception as exc:
+             for item in chunk:
+                 mapping[str(item["id"])] = {"id": item["id"], "error": str(exc)}
+-            continue
++            return
+         merge_usage(stats["usage"], usage)
+         chunk_map = parse_batch_results(parsed)
+         mapping.update(chunk_map)
+@@ -422,6 +464,9 @@ def deepseek_classify_batch(
+             if str(item["id"]) not in chunk_map:
+                 missing.append(item)
+ 
++    for chunk in chunks:
++        process_chunk(chunk)
++
+     # 成功応答にidが欠落していた場合、不足分だけ一度だけ再要求する。
+     if missing:
+         log.warning("DeepSeek応答に %d 件のidが欠落していたため、不足分のみ再要求します", len(missing))
+@@ -600,7 +645,7 @@ def posting_type_notifiable(posting_type: Optional[str], notify_posting_types: L
+ 
+ 
+ def discord_post(results: List[Result], webhook_url: str, max_items: int, labels: Dict[str, str]) -> None:
+-    posting_labels = {"internship": "インターン", "newgrad": "本選考", "midcareer": "中途", "other": "その他", "unknown": "不明"}
++    posting_labels = {"internship": "インターン", "newgrad": "本選考", "open_company": "オープンカンパニー", "midcareer": "中途", "other": "その他", "unknown": "不明"}
+     for chunk_start in range(0, min(len(results), max_items), 10):
+         embeds = []
+         for r in results[chunk_start:chunk_start + 10]:
+@@ -786,6 +831,13 @@ def main() -> int:
+     )
+ 
+     error_count = sum(1 for r in results if r.status == "error")
++    error_threshold = float(settings.get("error_rate_fail_threshold", 0.3))
++    if results and error_count / len(results) > error_threshold:
++        log.error(
++            "%d/%d件がエラーのため異常終了します（しきい値 %.0f%%）",
++            error_count, len(results), error_threshold * 100,
++        )
++        return 1
+     if error_count:
+         log.warning(
+             "%d件の取得・判定エラーがありましたが、他の監視対象は正常に処理されたため実行を継続します。",
+diff --git a/tests/test_checker.py b/tests/test_checker.py
+index 690540f..9e5eb45 100644
+--- a/tests/test_checker.py
++++ b/tests/test_checker.py
+@@ -7,16 +7,21 @@ import pytest
+ sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+ import checker
+ from checker import (
++    Result,
++    TruncatedResponseError,
+     build_batch_chunks,
+     build_batch_items,
+     confidence_percent,
+     deepseek_classify_batch,
+     heuristic_classify,
++    migrate_state,
+     parse_batch_results,
+     parse_categories_arg,
+     posting_type_notifiable,
+     reduce_text,
++    save_state,
+     select_targets,
++    should_notify,
+     status_from_is_open,
+     validate_config,
+ )
+@@ -234,3 +239,227 @@ def test_validate_profile_zero_target_category():
+     taxonomy["categories"]["research"] = "研究職"
+     errors = validate_config([_target(category="quant")], taxonomy)
+     assert any("対象が0件です" in e for e in errors)
++
++
++# --- 8. open_company が募集種別として有効 ---
++def test_validate_accepts_open_company_posting_type():
++    taxonomy = _taxonomy()
++    taxonomy["posting_types"]["open_company"] = "オープンカンパニー"
++    taxonomy["profiles"]["daily"]["notify_posting_types"] = ["internship", "newgrad", "open_company"]
++    targets = [_target(category="quant", tid="q1"), _target(category="actuary", tid="a1")]
++    assert validate_config(targets, taxonomy) == []
++
++
++# --- 6'. posting_type フィルタで open_company を通す ---
++def test_posting_type_filter_accepts_open_company():
++    assert posting_type_notifiable("open_company", ["internship", "newgrad", "open_company"], False)
++
++
++# --- 欠陥1: 打ち切り応答の分割回復 ---
++def _batch_item(item_id):
++    return {"id": item_id, "company": "c", "category": "it", "url": "https://example.com", "text": "t"}
++
++
++def test_truncation_splits_and_maps_all_ids():
++    items = [_batch_item(i) for i in ("a", "b", "c", "d")]
++    calls = []
++
++    def fake_post(chunk):
++        ids = tuple(i["id"] for i in chunk)
++        calls.append(ids)
++        if len(chunk) > 2:
++            raise TruncatedResponseError(len(chunk))
++        return {"results": [{"id": i["id"], "is_open": True, "posting_type": "internship"} for i in chunk]}, {}
++
++    mapping, stats = deepseek_classify_batch(items, {}, {"max_total_chars": 100000}, "2028", post_fn=fake_post)
++    assert set(mapping) == {"a", "b", "c", "d"}
++    assert all(mapping[k]["is_open"] is True for k in mapping)
++    # 4件のフルチャンクは1回だけ送られ、3回再送されない
++    assert calls.count(("a", "b", "c", "d")) == 1
++    assert len(calls) == 3  # フル1回 + 半分2回
++    assert stats["truncated_splits"] == 1
++
++
++def test_single_item_always_truncates_isolated_as_unknown():
++    items = [_batch_item("x"), _batch_item("y")]
++    calls = []
++
++    def fake_post(chunk):
++        ids = tuple(i["id"] for i in chunk)
++        calls.append(ids)
++        if ids == ("x", "y"):
++            raise TruncatedResponseError(2)
++        if ids == ("x",):
++            raise TruncatedResponseError(1)
++        return {"results": [{"id": i["id"], "is_open": True, "posting_type": "newgrad"} for i in chunk]}, {}
++
++    mapping, _ = deepseek_classify_batch(items, {}, {"max_total_chars": 100000}, "2028", post_fn=fake_post)
++    assert mapping["x"]["missing"] is True
++    assert mapping["x"]["posting_type"] == "unknown"
++    # 他のアイテムは通常どおり分類される
++    assert mapping["y"]["is_open"] is True
++    assert mapping["y"]["posting_type"] == "newgrad"
++
++
++# --- 欠陥1-C: エラー結果が良好な state を上書きしない ---
++def _result(target_id, status, content_hash="", deadline=None, posting_type=None, error=None):
++    return Result(target_id, "c", "quant", "https://x", status, 0, [], "", content_hash, "now", deadline, posting_type, error=error)
++
++
++def _set_state_file(monkeypatch, tmp_path, targets):
++    state_path = tmp_path / "state.json"
++    state_path.write_text(json.dumps({"updated_at": "x", "targets": targets}, ensure_ascii=False), encoding="utf-8")
++    monkeypatch.setattr(checker, "STATE_PATH", state_path)
++    return state_path
++
++
++def _read_state(path):
++    return json.loads(path.read_text(encoding="utf-8"))["targets"]
++
++
++def test_save_state_error_preserves_existing_entry(monkeypatch, tmp_path):
++    state_path = _set_state_file(monkeypatch, tmp_path, {
++        "a": {"status": "open", "score": 90, "content_hash": "h1", "deadline": "2026-12-31", "posting_type": "internship", "excerpt": "e", "reasons": ["r"]},
++    })
++    save_state([_result("a", "error", error="boom")])
++    entry = _read_state(state_path)["a"]
++    assert entry["status"] == "open"
++    assert entry["content_hash"] == "h1"
++    assert entry["deadline"] == "2026-12-31"
++    assert entry["posting_type"] == "internship"
++    assert entry["excerpt"] == "e"
++    assert entry["reasons"] == ["r"]
++    assert entry["last_error"] == "boom"
++    assert "last_error_at" in entry
++
++
++def test_save_state_error_with_no_entry_writes_nothing(monkeypatch, tmp_path):
++    state_path = _set_state_file(monkeypatch, tmp_path, {})
++    save_state([_result("a", "error", error="boom")])
++    assert "a" not in _read_state(state_path)
++
++
++def test_save_state_non_error_replaces(monkeypatch, tmp_path):
++    state_path = _set_state_file(monkeypatch, tmp_path, {"a": {"status": "possible", "content_hash": "old"}})
++    save_state([_result("a", "open", content_hash="new", posting_type="internship")])
++    entry = _read_state(state_path)["a"]
++    assert entry["status"] == "open"
++    assert entry["content_hash"] == "new"
++
++
++# --- 欠陥1-C: 回帰防止（前回 open → 全滅 → 次回に再通知されない） ---
++def test_failed_batch_does_not_trigger_renotify(monkeypatch, tmp_path):
++    state_path = _set_state_file(monkeypatch, tmp_path, {
++        "a": {"status": "open", "content_hash": "h1", "deadline": None, "posting_type": "internship"},
++    })
++    # バッチ全体が失敗した結果（status=error, content_hash=""）
++    save_state([_result("a", "error", error="boom")])
++    prev = _read_state(state_path)["a"]
++    # 次回の成功結果（同一 content_hash / deadline）
++    success = _result("a", "open", content_hash="h1")
++    assert should_notify(success, prev, False) is False
++
++
++# --- 欠陥2-B/C: open_company の移行 ---
++def test_migrate_state_maps_and_corrects_open_company(monkeypatch, tmp_path):
++    state_path = tmp_path / "state.json"
++    bak_path = tmp_path / "state.json.bak"
++    monkeypatch.setattr(checker, "STATE_PATH", state_path)
++    monkeypatch.setattr(checker, "STATE_BAK_PATH", bak_path)
++    state_path.write_text(json.dumps({
++        "targets": {
++            "a": {"program_type": "open_company"},
++            "b": {"program_type": "open_company", "posting_type": "other"},
++            "c": {"program_type": "selection"},
++        }
++    }, ensure_ascii=False), encoding="utf-8")
++
++    migrate_state()
++
++    targets = _read_state(state_path)
++    assert targets["a"]["posting_type"] == "open_company"
++    assert targets["b"]["posting_type"] == "open_company"
++    assert targets["c"]["posting_type"] == "newgrad"
++    assert bak_path.exists()
++
++
++# --- 欠陥1-E: エラー率しきい値で main が非ゼロを返す ---
++def test_main_returns_nonzero_on_high_error_rate(monkeypatch):
++    import argparse
++
++    config = {
++        "settings": {"error_rate_fail_threshold": 0.3, "notify_posting_types": ["internship", "newgrad", "open_company"], "notify_on_first_detection": False, "max_discord_items": 40, "require_deepseek": True},
++        "ai": {},
++        "targets": [
++            {"id": f"t{i}", "company": "c", "category": "quant", "tier": "major", "enabled": True, "url": "https://x", "required_any": []}
++            for i in range(5)
++        ],
++    }
++    taxonomy = {
++        "categories": {"quant": "クオンツ", "actuary": "アクチュアリー", "it": "IT/SIer"},
++        "posting_types": {"internship": "x", "newgrad": "x", "open_company": "x"},
++        "profiles": {},
++    }
++
++    def fake_load_yaml(path):
++        return config if "targets" in str(path) else taxonomy
++
++    monkeypatch.setattr(checker, "load_yaml", fake_load_yaml)
++    monkeypatch.setattr(checker, "migrate_state", lambda: None)
++    monkeypatch.setattr(checker, "load_state", lambda: {"targets": {}})
++    monkeypatch.setattr(checker, "save_state", lambda results: None)
++
++    def fake_run_batch(targets, settings, ai_settings, use_ai, tax):
++        results = [_result(t["id"], "error", error="boom") if i < 4 else _result(t["id"], "open") for i, t in enumerate(targets)]
++        return results, {"fetched": 5, "batched": 5, "posts": 0, "total_chars": 0, "latency_seconds": 0.0, "usage": {}, "truncated_splits": 0}
++
++    monkeypatch.setattr(checker, "run_batch", fake_run_batch)
++
++    ns = argparse.Namespace(
++        category=None, profile=None, target=None, limit=0,
++        no_ai=True, no_discord=True, dry_run=False, validate_config=False, list=False,
++    )
++    monkeypatch.setattr(checker, "parse_args", lambda: ns)
++
++    assert checker.main() == 1
++
++
++def test_main_returns_zero_on_low_error_rate(monkeypatch):
++    import argparse
++
++    config = {
++        "settings": {"error_rate_fail_threshold": 0.3, "notify_posting_types": ["internship", "newgrad", "open_company"], "notify_on_first_detection": False, "max_discord_items": 40, "require_deepseek": True},
++        "ai": {},
++        "targets": [
++            {"id": f"t{i}", "company": "c", "category": "quant", "tier": "major", "enabled": True, "url": "https://x", "required_any": []}
++            for i in range(10)
++        ],
++    }
++    taxonomy = {
++        "categories": {"quant": "クオンツ", "actuary": "アクチュアリー", "it": "IT/SIer"},
++        "posting_types": {"internship": "x", "newgrad": "x", "open_company": "x"},
++        "profiles": {},
++    }
++
++    def fake_load_yaml(path):
++        return config if "targets" in str(path) else taxonomy
++
++    monkeypatch.setattr(checker, "load_yaml", fake_load_yaml)
++    monkeypatch.setattr(checker, "migrate_state", lambda: None)
++    monkeypatch.setattr(checker, "load_state", lambda: {"targets": {}})
++    monkeypatch.setattr(checker, "save_state", lambda results: None)
++
++    def fake_run_batch(targets, settings, ai_settings, use_ai, tax):
++        results = [_result(t["id"], "error", error="boom") if i < 2 else _result(t["id"], "open") for i, t in enumerate(targets)]
++        return results, {"fetched": 10, "batched": 10, "posts": 0, "total_chars": 0, "latency_seconds": 0.0, "usage": {}, "truncated_splits": 0}
++
++    monkeypatch.setattr(checker, "run_batch", fake_run_batch)
++
++    ns = argparse.Namespace(
++        category=None, profile=None, target=None, limit=0,
++        no_ai=True, no_discord=True, dry_run=False, validate_config=False, list=False,
++    )
++    monkeypatch.setattr(checker, "parse_args", lambda: ns)
++
++    assert checker.main() == 0
++
