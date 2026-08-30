@@ -6,8 +6,17 @@ on:
     - cron: "15 8 * * *"
       timezone: "Asia/Tokyo"
 
-  # GitHub上から手動実行するため
+  # GitHub上から手動実行するため（プロファイル／カテゴリを上書き可能）
   workflow_dispatch:
+    inputs:
+      profile:
+        description: "実行プロファイル名（例: daily）"
+        required: false
+        default: "daily"
+      categories:
+        description: "カテゴリをカンマ区切りで上書き（例: quant,actuary）"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -40,12 +49,18 @@ jobs:
           DEEPSEEK_BASE_URL=https://api.deepseek.com
           DEEPSEEK_ENABLED=true
           GRADUATION_YEAR=2028
-          DEEPSEEK_MAX_PAGE_CHARS=12000
           ENVEOF
 
-      - name: Check all recruitment categories
+      - name: Check recruitment categories
+        env:
+          PROFILE: ${{ inputs.profile || 'daily' }}
+          CATEGORIES: ${{ inputs.categories }}
         run: |
-          python src/checker.py
+          if [ -n "$CATEGORIES" ]; then
+            python src/checker.py --category "$CATEGORIES"
+          else
+            python src/checker.py --profile "$PROFILE"
+          fi
 
       - name: Commit updated state
         if: always()

@@ -3,11 +3,15 @@ settings:
   request_timeout_seconds: 25
   user_agent: RecruitWatch/0.3 (+personal job-search monitoring)
   notify_on_first_detection: false
+  notify_posting_types:
+  - internship
+  - newgrad
+  - open_company
+  notify_unknown_posting_type: true
   max_discord_items: 40
   require_deepseek: true
   deepseek_timeout_seconds: 90
-  deepseek_max_page_chars: 12000
-  deepseek_delay_seconds: 0.3
+  error_rate_fail_threshold: 0.3
   positive_keywords:
   - 28卒
   - 2028年卒
@@ -52,6 +56,35 @@ settings:
     - 戦略
     - デジタルコンサル
     - テクノロジーコンサル
+    asset_management:
+    - 資産運用
+    - アセットマネジメント
+    - ファンド
+    - 運用
+    - ポートフォリオ
+    data_science:
+    - データサイエンス
+    - データサイエンティスト
+    - 機械学習
+    - データ分析
+    - DS
+    - AI
+    trader:
+    - トレーダー
+    - トレーディング
+    - ディーリング
+    - マーケット
+    - QDT
+    research:
+    - 研究
+    - 研究開発
+    - R&D
+    - 基礎研究
+    - 研究所
+ai:
+  max_chars_per_target: 6000
+  max_total_chars: 200000
+  max_tokens: 16384
 targets:
 - id: google-it-75-google-softwareengineer
   company: Google
@@ -139,16 +172,15 @@ targets:
   company: BCG
   source_entry: BCG(DS)
   score: 74
-  category: it
+  category: data_science
   tier: major
   url: https://careers.bcg.com/global/en/locations/japan
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: ufj-quant-74-mufg
   company: 三菱UFJ銀行
   source_entry: MUFG(クオンツ)
@@ -191,16 +223,14 @@ targets:
   company: Samsung
   source_entry: Samsung(R&D)
   score: 74
-  category: it
+  category: research
   tier: major
   url: https://www.samsung.com/jp/about-us/careers/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: kpmg-fas-consulting-73-kpmg-fas-ds
   company: KPMG FAS
   source_entry: KPMG FAS(DS)
@@ -217,16 +247,15 @@ targets:
   company: KPMG FAS
   source_entry: KPMG FAS(DS)
   score: 73
-  category: it
+  category: data_science
   tier: major
   url: https://recruit.kpmg-fas.jp/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: smbc-quant-73-
   company: SMBC日興証券
   source_entry: 日興証券(クオンツ)
@@ -279,28 +308,26 @@ targets:
   company: ソニーグループ
   source_entry: SONYグループ(R&D)
   score: 73
-  category: it
+  category: research
   tier: major
   url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: ibm-consulting-73-ibm
   company: IBM
   source_entry: IBM(基礎研)
   score: 73
-  category: consulting
+  category: research
   tier: major
   url: https://www.ibm.com/careers/jp-ja/
   enabled: true
   required_any:
-  - コンサル
-  - consulting
-  - strategy
+  - 研究
+  - 研究開発
+  - R&D
 - id: jp-20-actuary-72-ac
   company: 日本生命
   source_entry: 日本生命(AC)
@@ -329,44 +356,41 @@ targets:
   company: Accenture
   source_entry: Accenture(DS)
   score: 72
-  category: it
+  category: data_science
   tier: major
   url: https://www.accenture.com/jp-ja/careers/local/students
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-23-it-72-mcd3-ds
   company: 三菱商事デジタル
   source_entry: MCD3(DS)
   score: 72
-  category: it
+  category: data_science
   tier: major
   url: https://www.mcdigital.jp/careers
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-24-it-72-ds
   company: メルカリ
   source_entry: メルカリ(DS/エンジニア)
   score: 72
-  category: it
+  category: data_science
   tier: major
   url: https://careers.mercari.com/jp/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-25-it-72-
   company: スマートニュース
   source_entry: スマートニュース(エンジニア)
@@ -399,16 +423,14 @@ targets:
   company: 東京ガス
   source_entry: 東京ガス(R&D)
   score: 72
-  category: it
+  category: research
   tier: major
   url: https://www.tokyo-gas-recruit.com/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: aws-it-72-aws-cse
   company: AWS
   source_entry: AWS(CSE)
@@ -427,30 +449,26 @@ targets:
   company: ソニー
   source_entry: SONY(R&D)
   score: 72
-  category: it
+  category: research
   tier: major
   url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: jp-30-it-72-r-d
   company: 三菱重工
   source_entry: 三菱重工(航空宇宙系R&D/総合研究所)
   score: 72
-  category: it
+  category: research
   tier: major
   url: https://www.mhi.com/jp/recruit/shinsotsu/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: microsoft-it-72-microsoft
   company: Microsoft
   source_entry: Microsoft(技術営業)
@@ -469,30 +487,26 @@ targets:
   company: サントリー
   source_entry: サントリー(R&D/食品開発)
   score: 71
-  category: it
+  category: research
   tier: major
   url: https://www.suntory.co.jp/recruit/fresh/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: nec-it-71-nec-r-d-ai
   company: NEC
   source_entry: NEC(R&D 認識AI)
   score: 71
-  category: it
+  category: research
   tier: major
   url: https://jpn.nec.com/recruit/newgraduate/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: jp-34-it-71-
   company: レーザーテック
   source_entry: レーザーテック
@@ -511,16 +525,15 @@ targets:
   company: みずほフィナンシャルグループ
   source_entry: みずほ(QDT)
   score: 71
-  category: it
+  category: trader
   tier: major
-  url: https://www.mizuho-fg.co.jp/saiyou/recruit/
+  url: https://www.mizuho-fg.co.jp/saiyou/group/index.html
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - トレーダー
+  - トレーディング
+  - マーケット
+  - QDT
 - id: jp-36-quant-71-
   company: 商工組合中央金庫
   source_entry: 商工中央金庫(クオンツ)
@@ -597,30 +610,28 @@ targets:
   company: 電通
   source_entry: 電通(DS)
   score: 71
-  category: it
+  category: data_science
   tier: major
   url: https://www.career.dentsu.jp/recruit/2028/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: ufj-it-71-ufj-ds
   company: 三菱UFJ銀行
   source_entry: 三菱UFJ銀行(DS)
   score: 71
-  category: it
+  category: data_science
   tier: major
   url: https://www.mysite.bk.mufg.jp/28/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-44-it-71-mcd3
   company: 三菱商事デジタル
   source_entry: MCD3(エンジニア)
@@ -639,30 +650,26 @@ targets:
   company: NTT研究所
   source_entry: NTT研究所
   score: 70
-  category: it
+  category: research
   tier: major
   url: https://www.rd.ntt/recruit/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: jp-46-it-70-r-d
   company: 三菱重工
   source_entry: 三菱重工(航空宇宙以外 R&D)
   score: 70
-  category: it
+  category: research
   tier: major
   url: https://www.mhi.com/jp/recruit/shinsotsu/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: microsoft-it-70-microsoft
   company: Microsoft
   source_entry: Microsoft(テクサポ)
@@ -719,44 +726,41 @@ targets:
   company: 三井住友銀行
   source_entry: 三井住友銀行(DS)
   score: 70
-  category: it
+  category: data_science
   tier: major
   url: https://www.smbc-freshers.com/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-52-it-70-ds
   company: 第一生命
   source_entry: 第一生命(DS)
   score: 70
-  category: it
+  category: data_science
   tier: major
   url: https://www.dai-ichi-saiyo.jp/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-53-it-70-sony-ds
   company: ソニーグループ
   source_entry: SONYグループ(DS)
   score: 70
-  category: it
+  category: data_science
   tier: major
   url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-54-it-70-
   company: 任天堂
   source_entry: 任天堂(エンジニア)
@@ -867,30 +871,28 @@ targets:
   company: 三菱UFJ信託銀行
   source_entry: 三菱UFJ信託銀行(DS)
   score: 69
-  category: it
+  category: data_science
   tier: major
   url: https://www.mutbsaiyo.com/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-63-it-69-ds
   company: 博報堂
   source_entry: 博報堂(DS)
   score: 69
-  category: it
+  category: data_science
   tier: major
   url: https://hakusuku.jp/recruit/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-64-it-69-
   company: ソニー
   source_entry: ソニー(開発系)
@@ -937,16 +939,14 @@ targets:
   company: 富士通
   source_entry: 富士通(R&D)
   score: 68
-  category: it
+  category: research
   tier: major
   url: https://fujitsu.recruiting.jp.fujitsu.com/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: jp-68-consulting-68-nri-te-ae
   company: 野村総合研究所
   source_entry: 野村総合研究所*NRI*(TE/AE)
@@ -991,16 +991,15 @@ targets:
   company: 三井住友信託銀行
   source_entry: 三井住友信託銀行(DS)
   score: 68
-  category: it
+  category: data_science
   tier: major
   url: https://www.smtb.jp/recruit/new-graduate
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: ibm-consulting-68-ibm-ds
   company: IBM
   source_entry: IBM(DS)
@@ -1017,16 +1016,15 @@ targets:
   company: IBM
   source_entry: IBM(DS)
   score: 68
-  category: it
+  category: data_science
   tier: major
   url: https://www.ibm.com/careers/jp-ja/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: ntt-it-68-ntt-docomo-ai
   company: NTTドコモ
   source_entry: NTT docomo(AI)
@@ -1045,30 +1043,28 @@ targets:
   company: サントリー
   source_entry: サントリー(DS)
   score: 68
-  category: it
+  category: data_science
   tier: major
   url: https://www.suntory.co.jp/recruit/fresh/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-76-it-68-ds
   company: リクルート
   source_entry: リクルート(DS)
   score: 68
-  category: it
+  category: data_science
   tier: major
   url: https://www.recruit.co.jp/employment/students/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-77-consulting-67-dtc
   company: デロイト トーマツ コンサルティング
   source_entry: DTC
@@ -1181,30 +1177,28 @@ targets:
   company: 商工組合中央金庫
   source_entry: 商工中央金庫(DS)
   score: 67
-  category: it
+  category: data_science
   tier: major
   url: https://www.shokochukin.co.jp/recruit/newgraduate/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: ntt-it-67-ntt-docomo-ds
   company: NTTドコモ
   source_entry: NTT docomo(DS)
   score: 67
-  category: it
+  category: data_science
   tier: major
   url: https://information.nttdocomo-fresh.jp/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-87-it-67-
   company: リクルート
   source_entry: リクルート(エンジニア)
@@ -1301,16 +1295,14 @@ targets:
   company: NEC
   source_entry: NEC(R&D 認証AI以外)
   score: 66
-  category: it
+  category: research
   tier: major
   url: https://jpn.nec.com/recruit/newgraduate/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
-  - データサイエンス
+  - 研究
+  - 研究開発
+  - R&D
 - id: jp-95-it-66-
   company: バンダイナムコスタジオ
   source_entry: バンダイナムコスタジオ(ゲームエンジニア)
@@ -1357,30 +1349,28 @@ targets:
   company: 富士通
   source_entry: 富士通(DS)
   score: 66
-  category: it
+  category: data_science
   tier: major
   url: https://fujitsu.recruiting.jp.fujitsu.com/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: kddi-it-66-kddi-ds
   company: KDDI
   source_entry: KDDI(DS)
   score: 66
-  category: it
+  category: data_science
   tier: major
   url: https://career.kddi.com/freshers/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: accenture-consulting-65-accenture
   company: Accenture
   source_entry: Accenture(ビジネス/デジタル)
@@ -1397,16 +1387,15 @@ targets:
   company: SBI新生銀行
   source_entry: 新生銀行(DS)
   score: 65
-  category: it
+  category: data_science
   tier: major
   url: https://www.sbishinseibank.co.jp/recruit/newgraduate/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-102-consulting-65-
   company: アビームコンサルティング
   source_entry: アビームコンサルティング
@@ -1531,30 +1520,28 @@ targets:
   company: りそな銀行
   source_entry: りそな銀行(DS)
   score: 64
-  category: it
+  category: data_science
   tier: major
   url: https://www.resona-saiyo.com/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-112-it-64-ds
   company: 横浜銀行
   source_entry: 横浜銀行(DS)
   score: 64
-  category: it
+  category: data_science
   tier: major
   url: https://boy-recruit.yokohama/
   enabled: true
   required_any:
-  - エンジニア
-  - IT
-  - デジタル
-  - システム
   - データサイエンス
+  - データ分析
+  - AI
+  - 機械学習
 - id: jp-113-it-64-it
   company: ファーストリテイリング
   source_entry: ファーストリテイリング(IT関連)
@@ -1941,3 +1928,16 @@ targets:
   - IT
   - デジタル
   - システム
+- id: nomura-am-asset_management-72-nomura-am
+  company: 野村AM
+  source_entry: 野村AM(クオンツ)
+  score: 72
+  category: asset_management
+  tier: major
+  url: https://www.nomura-recruit.jp/graduate/
+  enabled: true
+  required_any:
+  - 資産運用
+  - 運用
+  - ファンド
+  - アセットマネジメント
