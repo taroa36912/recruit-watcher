@@ -5,3 +5,6 @@ python-dotenv>=1.0,<2
 
 # macOS標準Python 3.9 + LibreSSLでも警告なく動かすため
 urllib3>=1.26.18,<2
+
+# テスト実行用（本番の監視処理自体には不要）
+pytest>=7,<9

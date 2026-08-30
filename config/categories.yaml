@@ -1,0 +1,25 @@
+# カテゴリ・募集種別・実行プロファイルの唯一の定義元
+# (このファイル以外のコードや設定でカテゴリIDを増減させないこと)
+categories:
+  actuary: アクチュアリー
+  quant: クオンツ
+  asset_management: 資産運用
+  data_science: データサイエンス
+  trader: トレーダー
+  research: 研究職（R&D、基礎研究、研究開発）
+  it: IT/SIer
+  consulting: コンサル
+
+# DeepSeek分類が返す募集種別 (posting_type)
+posting_types:
+  internship: インターンシップ
+  newgrad: 本選考（新卒）
+  midcareer: 中途採用
+  other: その他
+  unknown: 不明
+
+# 実行プロファイル。カテゴリ・通知対象の募集種別をここだけで差し替えられる。
+profiles:
+  daily:
+    categories: [actuary, quant, asset_management, data_science, trader, research]
+    notify_posting_types: [internship, newgrad]
