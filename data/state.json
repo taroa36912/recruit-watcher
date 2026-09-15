@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T01:03:09.882653+00:00",
+  "updated_at": "2026-09-15T01:27:29.163630+00:00",
   "targets": {
     "google-it-75-google-softwareengineer": {
       "target_id": "google-it-75-google-softwareengineer",
@@ -131,14 +131,14 @@
       "category": "data_science",
       "url": "https://careers.bcg.com/global/en/locations/japan",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "国内新卒向け採用ページがあり、現在受付中の可能性が高い。"
+        "DeepSeek判定信頼度: 90%",
+        "国内新卒採用の案内があり、28卒マイページの案内もあるため受付中。"
       ],
-      "excerpt": "BCG 新卒採用",
-      "content_hash": "12538851bc6157340b87dbf5b269707bdd4cc8546c7edb4a9b2a011a8dd03089",
-      "checked_at": "2026-09-14T01:03:09.370410+00:00",
+      "excerpt": "BCG新卒採用",
+      "content_hash": "c3d530d75218ee8c7cb442d3e808d75e62e9178ff7b5087327dd7d20f82aa7b3",
+      "checked_at": "2026-09-15T01:27:28.667313+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -161,7 +161,7 @@
       "error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-9-quant-74-": {
       "target_id": "jp-9-quant-74-",
@@ -169,14 +169,14 @@
       "category": "quant",
       "url": "https://www.nomura-recruit.jp/graduate/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "2028卒マイページがあり、新卒採用を実施中。"
+        "DeepSeek判定信頼度: 90%",
+        "2028卒マイページがあり、新卒採用情報が掲載されているため。"
       ],
-      "excerpt": "野村證券 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "cc7169227a48d5c5de96375bd31a1b1e8434c31b18e1f1fe1b6b90805986caeb",
-      "checked_at": "2026-09-14T01:03:09.370577+00:00",
+      "checked_at": "2026-09-15T01:27:28.667487+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -205,14 +205,14 @@
       "category": "research",
       "url": "https://www.samsung.com/jp/about-us/careers/",
       "status": "closed_or_unknown",
-      "score": 50,
+      "score": 70,
       "reasons": [
-        "DeepSeek判定信頼度: 50%",
-        "新卒採用はナビサイト参照とあり、直接エントリー窓口なし。"
+        "DeepSeek判定信頼度: 70%",
+        "時期によっては募集停止の場合があり、詳細はナビサイト参照のため。"
       ],
-      "excerpt": "Samsung 採用情報",
+      "excerpt": "採用情報",
       "content_hash": "03e2d9f64192ff6dbd3fc4604c399efe00d7789ca47ad0358c3126563b047274",
-      "checked_at": "2026-09-14T01:03:09.370850+00:00",
+      "checked_at": "2026-09-15T01:27:28.667765+00:00",
       "deadline": null,
       "posting_type": "unknown",
       "ai_used": true,
@@ -244,14 +244,14 @@
       "category": "data_science",
       "url": "https://recruit.kpmg-fas.jp/",
       "status": "open",
-      "score": 90,
+      "score": 95,
       "reasons": [
-        "DeepSeek判定信頼度: 90%",
-        "2028年卒向けエントリー受付開始の記載あり。"
+        "DeepSeek判定信頼度: 95%",
+        "2028年卒向けエントリー受付開始のニュースがあるため。"
       ],
-      "excerpt": "KPMG FAS 新卒採用",
+      "excerpt": "2028年卒エントリー受付",
       "content_hash": "1426b1bc18daffa461e2cb9e099a4b9188ad10011861d10d5b50c814d78f3f4b",
-      "checked_at": "2026-09-14T01:03:09.371189+00:00",
+      "checked_at": "2026-09-15T01:27:28.668153+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -263,16 +263,16 @@
       "category": "quant",
       "url": "https://www.smbcnikko.co.jp/recruit/student/",
       "status": "open",
-      "score": 70,
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "ワークショップ・インターンシップ情報を掲載中。"
+        "DeepSeek判定信頼度: 80%",
+        "採用情報とワークショップ・インターンシップ情報のリンクがあるため。"
       ],
-      "excerpt": "SMBC日興証券 インターンシップ",
+      "excerpt": "新卒採用情報",
       "content_hash": "fbc471f010c9a9bc4ccdbdaddc2a08628f15069f7ce7ba5be1f280b211eeb296",
-      "checked_at": "2026-09-14T01:03:09.371247+00:00",
+      "checked_at": "2026-09-15T01:27:28.668218+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -282,14 +282,14 @@
       "category": "quant",
       "url": "https://www.daiwa-grp-recruit.jp/",
       "status": "open",
-      "score": 60,
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 60%",
-        "27卒ENTRY等の表示があり採用活動中。"
+        "DeepSeek判定信頼度: 80%",
+        "27卒ENTRYとMYPAGEリンクがあり、採用活動中と判断。"
       ],
-      "excerpt": "大和証券グループ 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "b724b2ca0d63adaf19a374f4e04f8537a50ecca301ffda50ef3ade385d7da8f8",
-      "checked_at": "2026-09-14T01:03:09.371270+00:00",
+      "checked_at": "2026-09-15T01:27:28.668241+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -301,16 +301,16 @@
       "category": "quant",
       "url": "https://www.smbc-freshers.com/",
       "status": "open",
-      "score": 70,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "2028卒インターンシップの記載あり。"
+        "DeepSeek判定信頼度: 90%",
+        "2028卒マイページとインターンシップ情報が掲載されているため。"
       ],
-      "excerpt": "三井住友銀行 インターンシップ",
+      "excerpt": "新卒採用",
       "content_hash": "0d8d236006ce0c5aa71a430c61ec1f37d9062259f26419e19f239b6f01891553",
-      "checked_at": "2026-09-14T01:03:09.371330+00:00",
+      "checked_at": "2026-09-15T01:27:28.668301+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -320,14 +320,14 @@
       "category": "actuary",
       "url": "https://www.saiyou.tokiomarine-nichido.co.jp/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "2028卒マイページ登録・応募が可能。"
+        "DeepSeek判定信頼度: 90%",
+        "応募方法・募集要項が2027年度新卒採用として記載され、マイページ案内があるため。"
       ],
-      "excerpt": "東京海上日動 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "8785d024db62b543eee9d5df06f621f17ae4cf5a83d011e749121810f189e35b",
-      "checked_at": "2026-09-14T01:03:09.371435+00:00",
+      "checked_at": "2026-09-15T01:27:28.668404+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -352,7 +352,7 @@
       "ai_used": true,
       "error": null,
       "last_error": "403 Client Error: Forbidden for url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "ibm-consulting-73-ibm": {
       "target_id": "ibm-consulting-73-ibm",
@@ -363,13 +363,13 @@
       "score": 70,
       "reasons": [
         "DeepSeek判定信頼度: 70%",
-        "キャリア採用とエントリーレベル求人を掲載。"
+        "エントリーレベルの求人を見るリンクがあり、新卒・インターン含むと判断。"
       ],
-      "excerpt": "IBM キャリア採用・インターンシップ",
+      "excerpt": "エントリーレベル採用",
       "content_hash": "06aeb3e05fa0322eb1dc1cd4433b64e3e35d71762bbfdcdb6398d44561b93f00",
-      "checked_at": "2026-09-14T01:03:09.371558+00:00",
+      "checked_at": "2026-09-15T01:27:28.668527+00:00",
       "deadline": null,
-      "posting_type": "other",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -379,16 +379,16 @@
       "category": "actuary",
       "url": "https://www.nissay-saiyo.com/",
       "status": "open",
-      "score": 70,
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "2028 INTERNSHIPの表記あり。"
+        "DeepSeek判定信頼度: 80%",
+        "2027 ENTRYと2028 INTERNSHIPのリンクがあり、採用活動中と判断。"
       ],
-      "excerpt": "日本生命 インターンシップ",
+      "excerpt": "新卒・キャリア採用サイト",
       "content_hash": "5224401081cf46903b556c28803f00d163ce5e2bd88730b08736a7a394cb3184",
-      "checked_at": "2026-09-14T01:03:09.371587+00:00",
+      "checked_at": "2026-09-15T01:27:28.668556+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "unknown",
       "ai_used": true,
       "error": null
     },
@@ -426,24 +426,24 @@
       "error": "404 Client Error: Not Found for url: https://www.accenture.com/jp-ja/careers/local/students",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.accenture.com/jp-ja/careers/local/students",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-23-it-72-mcd3-ds": {
       "target_id": "jp-23-it-72-mcd3-ds",
       "company": "三菱商事デジタル",
       "category": "data_science",
       "url": "https://www.mcdigital.jp/careers",
-      "status": "closed_or_unknown",
-      "score": 60,
+      "status": "open",
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 60%",
-        "2026年度新卒採用の記載はあるが現在受付中か不明。"
+        "DeepSeek判定信頼度: 80%",
+        "2026年度新卒採用の記載はあるが、オープンポジションはキャリア採用が中心。"
       ],
-      "excerpt": "MCデジタル 新卒採用",
+      "excerpt": "キャリア採用",
       "content_hash": "626c0ff6d13fc84d8d31f010c8c31f287d45aa0dc9556082a0c277b42d9af9b5",
-      "checked_at": "2026-09-14T01:03:09.371832+00:00",
+      "checked_at": "2026-09-15T01:27:28.668779+00:00",
       "deadline": null,
-      "posting_type": "newgrad",
+      "posting_type": "midcareer",
       "ai_used": true,
       "error": null
     },
@@ -453,14 +453,14 @@
       "category": "data_science",
       "url": "https://careers.mercari.com/jp/",
       "status": "open",
-      "score": 70,
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "新卒採用ページへのリンクがあり募集中の可能性。"
+        "DeepSeek判定信頼度: 80%",
+        "新卒採用のリンクと募集中の職種が掲載されているため。"
       ],
-      "excerpt": "メルカリ 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "332b43207f2130d78891620f5763939ce5ba3a423b11e91c5463ba39458b8926",
-      "checked_at": "2026-09-14T01:03:09.371907+00:00",
+      "checked_at": "2026-09-15T01:27:28.668851+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -516,14 +516,14 @@
       "category": "research",
       "url": "https://www.tokyo-gas-recruit.com/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "28卒マイページ登録開始の告知あり。"
+        "DeepSeek判定信頼度: 90%",
+        "28卒のmy page登録開始と夏イベント募集開始の告知があるため。"
       ],
-      "excerpt": "東京ガス 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "f78166b9f23ad268c6a42ffacb024f6c68f3ad1ec8f3a5aac1539868792a39e9",
-      "checked_at": "2026-09-14T01:03:09.371970+00:00",
+      "checked_at": "2026-09-15T01:27:28.668913+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -565,7 +565,7 @@
       "ai_used": true,
       "error": null,
       "last_error": "403 Client Error: Forbidden for url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-30-it-72-r-d": {
       "target_id": "jp-30-it-72-r-d",
@@ -576,11 +576,11 @@
       "score": 80,
       "reasons": [
         "DeepSeek判定信頼度: 80%",
-        "エントリーボタンがあり採用受付中。"
+        "エントリー・マイページ・イベント＆インターンシップのリンクがあるため。"
       ],
-      "excerpt": "三菱重工 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "2d38f49c2cfdf6b0e6ab4ba8656b8a90b3e9e92711ab1ab21ca7d4b5db2095bf",
-      "checked_at": "2026-09-14T01:03:09.372063+00:00",
+      "checked_at": "2026-09-15T01:27:28.669016+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -626,22 +626,22 @@
       "ai_used": true,
       "error": null,
       "last_error": "403 Client Error: Forbidden for url: https://www.suntory.co.jp/recruit/fresh/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "nec-it-71-nec-r-d-ai": {
       "target_id": "nec-it-71-nec-r-d-ai",
       "company": "NEC",
       "category": "research",
       "url": "https://jpn.nec.com/recruit/newgraduate/",
-      "status": "closed_or_unknown",
-      "score": 50,
+      "status": "open",
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 50%",
-        "新卒採用情報ページだが応募受付の明示なし。"
+        "DeepSeek判定信頼度: 90%",
+        "新卒採用情報とイベント＆インターンシップのリンクがあるため。"
       ],
-      "excerpt": "NEC 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "876aa0118ecbae3b0b3023476397c5450795663dedc70a3dfe293f9afbb924e4",
-      "checked_at": "2026-09-14T01:03:09.372097+00:00",
+      "checked_at": "2026-09-15T01:27:28.669051+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -688,7 +688,7 @@
       "ai_used": true,
       "error": null,
       "last_error": "403 Client Error: Forbidden for url: https://www.mizuho-fg.co.jp/saiyou/group/index.html",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-36-quant-71-": {
       "target_id": "jp-36-quant-71-",
@@ -707,7 +707,7 @@
       "error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-37-actuary-71-ac": {
       "target_id": "jp-37-actuary-71-ac",
@@ -715,14 +715,14 @@
       "category": "actuary",
       "url": "https://www.msig-saiyou.com/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "2028卒向け新採用サイトオープン。"
+        "DeepSeek判定信頼度: 90%",
+        "2028卒向け新採用サイトオープンとマイページ案内があるため。"
       ],
-      "excerpt": "三井住友海上 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "d716751adc978f5a78192e3065caff114b8db46ffb39794d754ead5914b5ab41",
-      "checked_at": "2026-09-14T01:03:09.372152+00:00",
+      "checked_at": "2026-09-15T01:27:28.669106+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -734,14 +734,14 @@
       "category": "actuary",
       "url": "https://www.sompo-japan-saiyo.com/",
       "status": "open",
-      "score": 90,
+      "score": 95,
       "reasons": [
-        "DeepSeek判定信頼度: 90%",
-        "2027年度入社新卒採用エントリー開始の記載。"
+        "DeepSeek判定信頼度: 95%",
+        "2027年度入社新卒採用エントリーを開始したニュースがあるため。"
       ],
-      "excerpt": "損保ジャパン 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "a4321199a6d725a18bd0f68625fdfadc0e93338b011b9099efab898b222cf076",
-      "checked_at": "2026-09-14T01:03:09.372273+00:00",
+      "checked_at": "2026-09-15T01:27:28.669243+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -752,17 +752,17 @@
       "company": "第一生命",
       "category": "actuary",
       "url": "https://www.dai-ichi-saiyo.jp/",
-      "status": "closed_or_unknown",
-      "score": 30,
+      "status": "open",
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 30%",
-        "リダイレクトページのみで本文情報なし。"
+        "DeepSeek判定信頼度: 80%",
+        "新卒採用サイトへ移動する旨が記載されているため。"
       ],
-      "excerpt": "第一生命 採用情報",
+      "excerpt": "新卒採用サイト",
       "content_hash": "2a5e27b89ed7d1eacc54673ff160bf9ea90e7f231fee20961b884a1dfb6c01b3",
-      "checked_at": "2026-09-14T01:03:09.372292+00:00",
+      "checked_at": "2026-09-15T01:27:28.669265+00:00",
       "deadline": null,
-      "posting_type": "unknown",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -772,16 +772,16 @@
       "category": "actuary",
       "url": "https://www.meijiyasuda-saiyo.com/",
       "status": "open",
-      "score": 70,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "インターンシップ2026の情報掲載。"
+        "DeepSeek判定信頼度: 90%",
+        "新規プレエントリーとマイページログインがあり、募集要項も更新されているため。"
       ],
-      "excerpt": "明治安田生命 インターンシップ",
+      "excerpt": "新卒採用",
       "content_hash": "0b5b545235bd6107c8e235383e8cdeb81a30942b57769f1655881633f3618dc9",
-      "checked_at": "2026-09-14T01:03:09.372469+00:00",
+      "checked_at": "2026-09-15T01:27:28.669438+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -791,14 +791,14 @@
       "category": "actuary",
       "url": "https://www.sumitomolife.co.jp/about/employ/saiyou/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "マイページ・プレエントリーあり。"
+        "DeepSeek判定信頼度: 90%",
+        "2027年入社MYPAGEとPRE ENTRYリンクがあり、採用活動中と判断。"
       ],
-      "excerpt": "住友生命 新卒採用",
+      "excerpt": "新卒採用WEBサイト",
       "content_hash": "998b0cbd48efad59556a5761cead4cdbf685c476a372451ee3f971bae4d95c5f",
-      "checked_at": "2026-09-14T01:03:09.372517+00:00",
+      "checked_at": "2026-09-15T01:27:28.669485+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -810,16 +810,16 @@
       "category": "data_science",
       "url": "https://www.career.dentsu.jp/recruit/2028/",
       "status": "open",
-      "score": 80,
+      "score": 95,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "2028年卒インターンシップエントリー期間掲載。"
+        "DeepSeek判定信頼度: 95%",
+        "2028年卒選考&インターン MYPAGE/ENTRYのリンクがあるため。"
       ],
-      "excerpt": "電通 インターンシップ",
+      "excerpt": "2028年卒新卒採用",
       "content_hash": "967bc19bf08ab9b1207722cd2a02847dcbe54a97b59b571d758e1164487bc631",
-      "checked_at": "2026-09-14T01:03:09.372603+00:00",
+      "checked_at": "2026-09-15T01:27:28.669572+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -840,7 +840,7 @@
       "error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-44-it-71-mcd3": {
       "target_id": "jp-44-it-71-mcd3",
@@ -881,7 +881,7 @@
       "error": "404 Client Error: Not Found for url: https://www.rd.ntt/recruit/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.rd.ntt/recruit/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-46-it-70-r-d": {
       "target_id": "jp-46-it-70-r-d",
@@ -892,11 +892,11 @@
       "score": 80,
       "reasons": [
         "DeepSeek判定信頼度: 80%",
-        "エントリーボタンがあり採用受付中。"
+        "エントリー・マイページ・イベント＆インターンシップのリンクがあるため。"
       ],
-      "excerpt": "三菱重工 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "2d38f49c2cfdf6b0e6ab4ba8656b8a90b3e9e92711ab1ab21ca7d4b5db2095bf",
-      "checked_at": "2026-09-14T01:03:09.372695+00:00",
+      "checked_at": "2026-09-15T01:27:28.669662+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -927,15 +927,15 @@
       "company": "三菱UFJ信託銀行",
       "category": "actuary",
       "url": "https://www.mutbsaiyo.com/",
-      "status": "closed_or_unknown",
-      "score": 50,
+      "status": "open",
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 50%",
-        "2027年度新卒採用情報公開とあるが現在受付中か不明。"
+        "DeepSeek判定信頼度: 90%",
+        "2027年度新卒採用情報を公開したと記載されているため。"
       ],
-      "excerpt": "三菱UFJ信託銀行 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "5cb8728517846486b581de30017a8c7db21a78f20fcf9269844a6b97fc403cef",
-      "checked_at": "2026-09-14T01:03:09.372721+00:00",
+      "checked_at": "2026-09-15T01:27:28.669689+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -981,16 +981,16 @@
       "category": "data_science",
       "url": "https://www.smbc-freshers.com/",
       "status": "open",
-      "score": 70,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "2028卒インターンシップの記載あり。"
+        "DeepSeek判定信頼度: 90%",
+        "2028卒マイページとインターンシップ情報が掲載されているため。"
       ],
-      "excerpt": "三井住友銀行 インターンシップ",
+      "excerpt": "新卒採用",
       "content_hash": "0d8d236006ce0c5aa71a430c61ec1f37d9062259f26419e19f239b6f01891553",
-      "checked_at": "2026-09-14T01:03:09.372780+00:00",
+      "checked_at": "2026-09-15T01:27:28.669747+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -999,17 +999,17 @@
       "company": "第一生命",
       "category": "data_science",
       "url": "https://www.dai-ichi-saiyo.jp/",
-      "status": "closed_or_unknown",
-      "score": 30,
+      "status": "open",
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 30%",
-        "リダイレクトページのみ。"
+        "DeepSeek判定信頼度: 80%",
+        "新卒採用サイトへ移動する旨が記載されているため。"
       ],
-      "excerpt": "第一生命 採用情報",
+      "excerpt": "新卒採用サイト",
       "content_hash": "2a5e27b89ed7d1eacc54673ff160bf9ea90e7f231fee20961b884a1dfb6c01b3",
-      "checked_at": "2026-09-14T01:03:09.372811+00:00",
+      "checked_at": "2026-09-15T01:27:28.669769+00:00",
       "deadline": null,
-      "posting_type": "unknown",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -1032,7 +1032,7 @@
       "ai_used": true,
       "error": null,
       "last_error": "403 Client Error: Forbidden for url: https://www.sony.com/ja/SonyInfo/Jobs/newgrads/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-54-it-70-": {
       "target_id": "jp-54-it-70-",
@@ -1186,16 +1186,16 @@
       "category": "actuary",
       "url": "https://www.smtb.jp/recruit/new-graduate",
       "status": "open",
-      "score": 70,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "28卒インターンシップ＆セミナー案内あり。"
+        "DeepSeek判定信頼度: 90%",
+        "2028卒マイページとインターンシップセミナーのリンクがあるため。"
       ],
-      "excerpt": "三井住友信託銀行 インターンシップ",
-      "content_hash": "36874abd160f5732d4038f051473a51b26f06b76d6cb7421e11e8b94b9f4ec04",
-      "checked_at": "2026-09-14T01:03:09.372993+00:00",
+      "excerpt": "新卒採用",
+      "content_hash": "753231a5913696fd50441036c991a110d3870fbe247653baa812949d4064ebe3",
+      "checked_at": "2026-09-15T01:27:28.669903+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -1204,15 +1204,15 @@
       "company": "三菱UFJ信託銀行",
       "category": "data_science",
       "url": "https://www.mutbsaiyo.com/",
-      "status": "closed_or_unknown",
-      "score": 50,
+      "status": "open",
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 50%",
-        "2027年度新卒採用情報公開とあるが現在受付中か不明。"
+        "DeepSeek判定信頼度: 90%",
+        "2027年度新卒採用情報を公開したと記載されているため。"
       ],
-      "excerpt": "三菱UFJ信託銀行 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "5cb8728517846486b581de30017a8c7db21a78f20fcf9269844a6b97fc403cef",
-      "checked_at": "2026-09-14T01:03:09.373019+00:00",
+      "checked_at": "2026-09-15T01:27:28.669929+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -1224,16 +1224,16 @@
       "category": "data_science",
       "url": "https://hakusuku.jp/recruit/",
       "status": "open",
-      "score": 90,
+      "score": 95,
       "reasons": [
-        "DeepSeek判定信頼度: 90%",
-        "インターンシップエントリー期間が明記。"
+        "DeepSeek判定信頼度: 95%",
+        "2028年卒プレエントリー開始のお知らせがあるため。"
       ],
-      "excerpt": "博報堂 インターンシップ",
+      "excerpt": "新卒採用",
       "content_hash": "a5579cc3adaa9db5c035146582de32b27254c76c36cae506565282e34a14f480",
-      "checked_at": "2026-09-14T01:03:09.373291+00:00",
-      "deadline": "2026-10-02",
-      "posting_type": "internship",
+      "checked_at": "2026-09-15T01:27:28.670239+00:00",
+      "deadline": null,
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -1299,14 +1299,14 @@
       "category": "research",
       "url": "https://fujitsu.recruiting.jp.fujitsu.com/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "新卒採用募集要項へのリンクあり。"
+        "DeepSeek判定信頼度: 90%",
+        "新卒採用募集要項とイベント・インターンシップ情報のリンクがあるため。"
       ],
-      "excerpt": "富士通 新卒採用",
-      "content_hash": "280be99af1687fefa5dd5af8c7ee272f9478de5c147092a4a91038c36f11cd01",
-      "checked_at": "2026-09-14T01:03:09.373438+00:00",
+      "excerpt": "新卒採用",
+      "content_hash": "7987e59ea011cbe8d759b5d5816e1900d8d56de497eb7d42bb265a724ede43dc",
+      "checked_at": "2026-09-15T01:27:28.670388+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -1382,16 +1382,16 @@
       "category": "data_science",
       "url": "https://www.smtb.jp/recruit/new-graduate",
       "status": "open",
-      "score": 70,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "28卒インターンシップ＆セミナー案内あり。"
+        "DeepSeek判定信頼度: 90%",
+        "2028卒マイページとインターンシップセミナーのリンクがあるため。"
       ],
-      "excerpt": "三井住友信託銀行 インターンシップ",
-      "content_hash": "36874abd160f5732d4038f051473a51b26f06b76d6cb7421e11e8b94b9f4ec04",
-      "checked_at": "2026-09-14T01:03:09.373622+00:00",
+      "excerpt": "新卒採用",
+      "content_hash": "753231a5913696fd50441036c991a110d3870fbe247653baa812949d4064ebe3",
+      "checked_at": "2026-09-15T01:27:28.670527+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -1425,13 +1425,13 @@
       "score": 70,
       "reasons": [
         "DeepSeek判定信頼度: 70%",
-        "キャリア採用とエントリーレベル求人を掲載。"
+        "エントリーレベルの求人を見るリンクがあり、新卒・インターン含むと判断。"
       ],
-      "excerpt": "IBM キャリア採用・インターンシップ",
+      "excerpt": "エントリーレベル採用",
       "content_hash": "06aeb3e05fa0322eb1dc1cd4433b64e3e35d71762bbfdcdb6398d44561b93f00",
-      "checked_at": "2026-09-14T01:03:09.373740+00:00",
+      "checked_at": "2026-09-15T01:27:28.670640+00:00",
       "deadline": null,
-      "posting_type": "other",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -1475,7 +1475,7 @@
       "ai_used": true,
       "error": null,
       "last_error": "403 Client Error: Forbidden for url: https://www.suntory.co.jp/recruit/fresh/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-76-it-68-ds": {
       "target_id": "jp-76-it-68-ds",
@@ -1496,7 +1496,7 @@
       "ai_used": true,
       "error": null,
       "last_error": "403 Client Error: Forbidden for url: https://www.recruit.co.jp/employment/students/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-77-consulting-67-dtc": {
       "target_id": "jp-77-consulting-67-dtc",
@@ -1676,7 +1676,7 @@
       "error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "ntt-it-67-ntt-docomo-ds": {
       "target_id": "ntt-it-67-ntt-docomo-ds",
@@ -1684,16 +1684,16 @@
       "category": "data_science",
       "url": "https://information.nttdocomo-fresh.jp/",
       "status": "open",
-      "score": 70,
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "インターンシップ情報を掲載。"
+        "DeepSeek判定信頼度: 80%",
+        "新卒採用TOPにマイページ新規登録とログインがあり、インターンシップ情報もあるため。"
       ],
-      "excerpt": "NTTドコモ インターンシップ",
+      "excerpt": "新卒採用",
       "content_hash": "dc8db9d6dfa0349eff947480f8571072bbe95a870619d3074fe9d634f583b237",
-      "checked_at": "2026-09-14T01:03:09.374697+00:00",
+      "checked_at": "2026-09-15T01:27:28.671587+00:00",
       "deadline": null,
-      "posting_type": "internship",
+      "posting_type": "newgrad",
       "ai_used": true,
       "error": null
     },
@@ -1843,15 +1843,15 @@
       "company": "NEC",
       "category": "research",
       "url": "https://jpn.nec.com/recruit/newgraduate/",
-      "status": "closed_or_unknown",
-      "score": 50,
+      "status": "open",
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 50%",
-        "新卒採用情報ページだが応募受付の明示なし。"
+        "DeepSeek判定信頼度: 90%",
+        "新卒採用情報とイベント＆インターンシップのリンクがあるため。"
       ],
-      "excerpt": "NEC 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "876aa0118ecbae3b0b3023476397c5450795663dedc70a3dfe293f9afbb924e4",
-      "checked_at": "2026-09-14T01:03:09.374734+00:00",
+      "checked_at": "2026-09-15T01:27:28.671625+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -1933,14 +1933,14 @@
       "category": "data_science",
       "url": "https://fujitsu.recruiting.jp.fujitsu.com/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "新卒採用募集要項へのリンクあり。"
+        "DeepSeek判定信頼度: 90%",
+        "新卒採用募集要項とイベント・インターンシップ情報のリンクがあるため。"
       ],
-      "excerpt": "富士通 新卒採用",
-      "content_hash": "754a01596c1d94907dddac0572d5b47ab389366cd3134d10a9cb2c599e2d7fde",
-      "checked_at": "2026-09-14T01:03:09.374932+00:00",
+      "excerpt": "新卒採用",
+      "content_hash": "61789f6019642f60b817a51db284e5b06deb974bccde8e435259c35c29ce1b4b",
+      "checked_at": "2026-09-15T01:27:28.671807+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -1952,14 +1952,14 @@
       "category": "data_science",
       "url": "https://career.kddi.com/freshers/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "プレエントリー・本エントリーの案内あり。"
+        "DeepSeek判定信頼度: 90%",
+        "プレエントリーと本エントリーの案内があり、募集要項も掲載されているため。"
       ],
-      "excerpt": "KDDI 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "fdcc1ba28c1ba3022b2c5fd3c7db7249650e66df5d80d81c080b57851b4bd31e",
-      "checked_at": "2026-09-14T01:03:09.374985+00:00",
+      "checked_at": "2026-09-15T01:27:28.671859+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -1999,7 +1999,7 @@
       "error": "HTTPSConnectionPool(host='www.sbishinseibank.co.jp', port=443): Read timed out. (read timeout=25)",
       "posting_type": "unknown",
       "last_error": "HTTPSConnectionPool(host='www.sbishinseibank.co.jp', port=443): Read timed out. (read timeout=25)",
-      "last_error_at": "2026-09-14T01:03:09.882653+00:00"
+      "last_error_at": "2026-09-15T01:27:29.163630+00:00"
     },
     "jp-102-consulting-65-": {
       "target_id": "jp-102-consulting-65-",
@@ -2182,11 +2182,11 @@
       "score": 80,
       "reasons": [
         "DeepSeek判定信頼度: 80%",
-        "新卒採用情報ページへのリンクあり。"
+        "新卒採用情報のリンクがあるため。"
       ],
-      "excerpt": "りそなグループ 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "0994dc3c63d238b727545f16f653c785e9f5315c28b4fd87e53b3207c297e2b9",
-      "checked_at": "2026-09-14T01:03:09.375034+00:00",
+      "checked_at": "2026-09-15T01:27:28.671906+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -2198,14 +2198,14 @@
       "category": "data_science",
       "url": "https://boy-recruit.yokohama/",
       "status": "open",
-      "score": 70,
+      "score": 80,
       "reasons": [
-        "DeepSeek判定信頼度: 70%",
-        "新卒採用情報のリンクあり。"
+        "DeepSeek判定信頼度: 80%",
+        "インターンシップ情報と新卒採用情報のリンクがあるため。"
       ],
-      "excerpt": "横浜銀行 新卒採用",
+      "excerpt": "新卒採用情報",
       "content_hash": "a46bf94ae4597c7f66cea853a642589128bf01218d9dcfe2574ad680ef674c92",
-      "checked_at": "2026-09-14T01:03:09.375055+00:00",
+      "checked_at": "2026-09-15T01:27:28.671928+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
@@ -2452,14 +2452,14 @@
       "category": "quant",
       "url": "https://careers.point72.com/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "インターンシップ募集あり。"
+        "DeepSeek判定信頼度: 90%",
+        "インターンシップのフィルターがあり、学生向けプログラムが掲載されているため。"
       ],
-      "excerpt": "Point72 インターンシップ",
+      "excerpt": "インターンシップ",
       "content_hash": "5fa3c7ed2af13e26d2d38570fff390b288ee3f9a32ee9c9396c80105a761d6ed",
-      "checked_at": "2026-09-14T01:03:09.375171+00:00",
+      "checked_at": "2026-09-15T01:27:28.672041+00:00",
       "deadline": null,
       "posting_type": "internship",
       "ai_used": true,
@@ -2726,14 +2726,14 @@
       "category": "quant",
       "url": "https://www.goldmansachs.com/careers/students",
       "status": "open",
-      "score": 90,
+      "score": 95,
       "reasons": [
-        "DeepSeek判定信頼度: 90%",
-        "2027年サマーインターンシップ応募受付中。"
+        "DeepSeek判定信頼度: 95%",
+        "2027年サマーインターンシップの応募受付中の告知があるため。"
       ],
-      "excerpt": "Goldman Sachs インターンシップ",
+      "excerpt": "2027年サマーインターンシップ",
       "content_hash": "9c5bb1071d2d0d6c9b7b1ee0febb957271952e4d583f36be6dcd30f6769b3d98",
-      "checked_at": "2026-09-14T01:03:09.375282+00:00",
+      "checked_at": "2026-09-15T01:27:28.672163+00:00",
       "deadline": null,
       "posting_type": "internship",
       "ai_used": true,
@@ -2858,14 +2858,14 @@
       "category": "asset_management",
       "url": "https://www.nomura-recruit.jp/graduate/",
       "status": "open",
-      "score": 80,
+      "score": 90,
       "reasons": [
-        "DeepSeek判定信頼度: 80%",
-        "2028卒マイページがあり、新卒採用を実施中。"
+        "DeepSeek判定信頼度: 90%",
+        "2028卒マイページがあり、新卒採用情報が掲載されているため。"
       ],
-      "excerpt": "野村證券 新卒採用",
+      "excerpt": "新卒採用",
       "content_hash": "cc7169227a48d5c5de96375bd31a1b1e8434c31b18e1f1fe1b6b90805986caeb",
-      "checked_at": "2026-09-14T01:03:09.375409+00:00",
+      "checked_at": "2026-09-15T01:27:28.672292+00:00",
       "deadline": null,
       "posting_type": "newgrad",
       "ai_used": true,
