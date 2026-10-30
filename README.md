@@ -1,6 +1,7 @@
 # Recruit Watch for Mac
 
-28卒向けのクオンツ、アクチュアリー、資産運用、データサイエンス、トレーダー、研究職の募集ページを巡回し、DeepSeek V4 Proで一括判定してDiscordへ通知します。
+28卒向けのクオンツ、アクチュアリー、資産運用、データサイエンス、トレーダー、研究職の募集ページを巡回し、Claude Code CLI（Claude Proのログイン済みセッション、`claude -p`）で一括判定してDiscordへ通知します。
+`AI_BACKEND=deepseek` にすると従来の DeepSeek API 判定に戻せます。
 
 ## 定期実行（Surface / Windows）
 
@@ -16,7 +17,7 @@ chmod +x scripts/*.sh
 open -e .env
 ```
 
-`.env` に `DEEPSEEK_API_KEY` と `DISCORD_WEBHOOK_URL` を入力します。
+`.env` に `DISCORD_WEBHOOK_URL` を入力します。判定には Claude Code（`claude` コマンド、ログイン済み）が必要です。DeepSeek を使う場合のみ `AI_BACKEND=deepseek` と `DEEPSEEK_API_KEY` を設定します。
 
 ## 無料ローカルテスト
 
@@ -33,7 +34,7 @@ source .venv/bin/activate
 python src/checker.py --limit 10 --no-ai --no-discord
 ```
 
-## DeepSeekを使う1件テスト
+## AI判定を使う1件テスト
 
 ```zsh
 ./scripts/run_mac.sh --target google-it-75-google-softwareengineer --no-discord
