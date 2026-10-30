@@ -6,3 +6,6 @@ __pycache__/
 
 # 状態マイグレーション時のバックアップ（コミットしない）
 data/state.json.bak
+
+# Windows定期実行のログ
+logs/

@@ -2,6 +2,11 @@
 
 28卒向けのクオンツ、アクチュアリー、資産運用、データサイエンス、トレーダー、研究職の募集ページを巡回し、DeepSeek V4 Proで一括判定してDiscordへ通知します。
 
+## 定期実行（Surface / Windows）
+
+毎日の定期実行は Surface のタスクスケジューラで行います（GitHub Actions の定期実行は停止）。
+移行・セットアップ手順は [docs/windows_setup.md](docs/windows_setup.md) を参照してください。
+
 ## Macでの初期設定
 
 ```zsh
