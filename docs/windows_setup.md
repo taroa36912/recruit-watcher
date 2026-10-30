@@ -37,15 +37,41 @@ gh pr create -R taroa36912/recruit-watcher --base main --head claude/ecstatic-fa
 gh pr merge -R taroa36912/recruit-watcher claude/ecstatic-faraday-ac8p0i --merge
 ```
 
-## 4. リポジトリを取得
+Job-hunting 側の `.gitignore`（`recruit-watcher/` を除外する変更）も取り込みます。
 
 ```powershell
-gh repo clone taroa36912/recruit-watcher "$HOME\recruit-watcher"
+gh pr create -R taroa36912/Job-hunting --base main --head claude/ecstatic-faraday-ac8p0i --title "recruit-watcher フォルダを git 管理から除外" --body ".gitignore に recruit-watcher/ を追加"
 ```
 
 ```powershell
-cd "$HOME\recruit-watcher"
+gh pr merge -R taroa36912/Job-hunting claude/ecstatic-faraday-ac8p0i --merge
 ```
+
+## 4. リポジトリを取得（Job-hunting フォルダの下に配置）
+
+配置先は `<Job-hunting>\recruit-watcher` です。まず Surface 上の Job-hunting フォルダの場所を変数に入れます（場所が違う場合はこの1行だけ書き換えてください）。
+
+```powershell
+$JobHunting = "$HOME\Job-hunting"
+```
+
+Job-hunting がまだ Surface に無い場合のみ、先に取得します。
+
+```powershell
+if (-not (Test-Path $JobHunting)) { gh repo clone taroa36912/Job-hunting $JobHunting }
+```
+
+recruit-watcher を Job-hunting の中に取得して移動します。
+
+```powershell
+gh repo clone taroa36912/recruit-watcher "$JobHunting\recruit-watcher"
+```
+
+```powershell
+cd "$JobHunting\recruit-watcher"
+```
+
+`recruit-watcher` は独立した git リポジトリのままです（Job-hunting 側の `.gitignore` で除外済み）。Job-hunting にコミットされることはありません。
 
 ## 5. セットアップ（Actions停止 + タスク登録まで一括）
 
@@ -79,7 +105,7 @@ Get-ScheduledTaskInfo -TaskName RecruitWatcher-Daily | Select-Object LastRunTime
 ```
 
 ```powershell
-Get-Content (Get-ChildItem "$HOME\recruit-watcher\logs\run-*.log" | Sort-Object LastWriteTime | Select-Object -Last 1).FullName -Tail 30
+Get-Content (Get-ChildItem "$JobHunting\recruit-watcher\logs\run-*.log" | Sort-Object LastWriteTime | Select-Object -Last 1).FullName -Tail 30
 ```
 
 ## 7. （推奨）電源接続中はスリープしない
@@ -93,7 +119,8 @@ powercfg /change standby-timeout-ac 0
 
 ## 運用メモ
 
-- ログ: `logs\run-YYYYMMDD-HHMMSS.log`（30日で自動削除）
+- 配置先: `<Job-hunting>\recruit-watcher`（フォルダを移動した場合は `setup_windows.ps1` を再実行してタスクを登録し直す）
+- ログ: `<Job-hunting>\recruit-watcher\logs\run-YYYYMMDD-HHMMSS.log`（30日で自動削除）
 - 失敗時は Discord に「⚠️ 定期実行が失敗しました」と通知されます
 - 実行のたびに `git pull` するので、設定変更は GitHub 側でコミットすれば次回から反映されます
 - タスクは「ユーザーがログオンしているときのみ実行」です。Surface をサインアウトした状態にしないでください
