@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T23:16:25.316737+00:00",
+  "updated_at": "2026-11-03T23:15:56.354452+00:00",
   "targets": {
     "google-it-75-google-softwareengineer": {
       "target_id": "google-it-75-google-softwareengineer",
@@ -143,8 +143,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "ufj-quant-74-mufg": {
       "target_id": "ufj-quant-74-mufg",
@@ -163,7 +163,7 @@
       "error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-9-quant-74-": {
       "target_id": "jp-9-quant-74-",
@@ -183,8 +183,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "aws-it-74-aws-sa-ps": {
       "target_id": "aws-it-74-aws-sa-ps",
@@ -221,8 +221,8 @@
       "posting_type": "unknown",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "kpmg-fas-consulting-73-kpmg-fas-ds": {
       "target_id": "kpmg-fas-consulting-73-kpmg-fas-ds",
@@ -262,8 +262,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "smbc-quant-73-": {
       "target_id": "smbc-quant-73-",
@@ -283,8 +283,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-15-quant-73-": {
       "target_id": "jp-15-quant-73-",
@@ -304,8 +304,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-16-quant-73-": {
       "target_id": "jp-16-quant-73-",
@@ -325,8 +325,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-17-actuary-73-ac": {
       "target_id": "jp-17-actuary-73-ac",
@@ -346,8 +346,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-18-it-73-sony-r-d": {
       "target_id": "jp-18-it-73-sony-r-d",
@@ -367,8 +367,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "ibm-consulting-73-ibm": {
       "target_id": "ibm-consulting-73-ibm",
@@ -388,8 +388,8 @@
       "posting_type": "midcareer",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-20-actuary-72-ac": {
       "target_id": "jp-20-actuary-72-ac",
@@ -409,8 +409,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "accenture-consulting-72-accenture-ds": {
       "target_id": "accenture-consulting-72-accenture-ds",
@@ -446,7 +446,7 @@
       "error": "404 Client Error: Not Found for url: https://www.accenture.com/jp-ja/careers/local/students",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.accenture.com/jp-ja/careers/local/students",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-23-it-72-mcd3-ds": {
       "target_id": "jp-23-it-72-mcd3-ds",
@@ -466,8 +466,8 @@
       "posting_type": "midcareer",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-24-it-72-ds": {
       "target_id": "jp-24-it-72-ds",
@@ -487,8 +487,8 @@
       "posting_type": "unknown",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-25-it-72-": {
       "target_id": "jp-25-it-72-",
@@ -552,8 +552,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "aws-it-72-aws-cse": {
       "target_id": "aws-it-72-aws-cse",
@@ -590,8 +590,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-30-it-72-r-d": {
       "target_id": "jp-30-it-72-r-d",
@@ -611,8 +611,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "microsoft-it-72-microsoft": {
       "target_id": "microsoft-it-72-microsoft",
@@ -653,8 +653,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "nec-it-71-nec-r-d-ai": {
       "target_id": "nec-it-71-nec-r-d-ai",
@@ -674,8 +674,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-34-it-71-": {
       "target_id": "jp-34-it-71-",
@@ -717,8 +717,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-36-quant-71-": {
       "target_id": "jp-36-quant-71-",
@@ -737,7 +737,7 @@
       "error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-37-actuary-71-ac": {
       "target_id": "jp-37-actuary-71-ac",
@@ -757,8 +757,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "sompo-actuary-71-ac": {
       "target_id": "sompo-actuary-71-ac",
@@ -778,8 +778,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-39-actuary-71-ac": {
       "target_id": "jp-39-actuary-71-ac",
@@ -799,8 +799,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-40-actuary-71-ac": {
       "target_id": "jp-40-actuary-71-ac",
@@ -820,8 +820,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-41-actuary-71-ac": {
       "target_id": "jp-41-actuary-71-ac",
@@ -841,8 +841,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-42-it-71-ds": {
       "target_id": "jp-42-it-71-ds",
@@ -862,8 +862,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "ufj-it-71-ufj-ds": {
       "target_id": "ufj-it-71-ufj-ds",
@@ -882,7 +882,7 @@
       "error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.mysite.bk.mufg.jp/28/",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-44-it-71-mcd3": {
       "target_id": "jp-44-it-71-mcd3",
@@ -923,7 +923,7 @@
       "error": "404 Client Error: Not Found for url: https://www.rd.ntt/recruit/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.rd.ntt/recruit/",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-46-it-70-r-d": {
       "target_id": "jp-46-it-70-r-d",
@@ -943,8 +943,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "microsoft-it-70-microsoft": {
       "target_id": "microsoft-it-70-microsoft",
@@ -984,8 +984,8 @@
       "posting_type": "unknown",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "igpi-digital-intelligence-consulting-70-igpi-digital-intelligence": {
       "target_id": "igpi-digital-intelligence-consulting-70-igpi-digital-intelligence",
@@ -1039,8 +1039,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-52-it-70-ds": {
       "target_id": "jp-52-it-70-ds",
@@ -1060,8 +1060,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-53-it-70-sony-ds": {
       "target_id": "jp-53-it-70-sony-ds",
@@ -1081,8 +1081,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-54-it-70-": {
       "target_id": "jp-54-it-70-",
@@ -1248,8 +1248,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "ufj-it-69-ufj-ds": {
       "target_id": "ufj-it-69-ufj-ds",
@@ -1269,8 +1269,8 @@
       "posting_type": "unknown",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-63-it-69-ds": {
       "target_id": "jp-63-it-69-ds",
@@ -1290,8 +1290,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-64-it-69-": {
       "target_id": "jp-64-it-69-",
@@ -1367,8 +1367,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-68-consulting-68-nri-te-ae": {
       "target_id": "jp-68-consulting-68-nri-te-ae",
@@ -1452,8 +1452,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "ibm-consulting-68-ibm-ds": {
       "target_id": "ibm-consulting-68-ibm-ds",
@@ -1494,8 +1494,8 @@
       "posting_type": "midcareer",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "ntt-it-68-ntt-docomo-ai": {
       "target_id": "ntt-it-68-ntt-docomo-ai",
@@ -1536,8 +1536,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-76-it-68-ds": {
       "target_id": "jp-76-it-68-ds",
@@ -1557,8 +1557,8 @@
       "posting_type": "unknown",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-77-consulting-67-dtc": {
       "target_id": "jp-77-consulting-67-dtc",
@@ -1738,7 +1738,7 @@
       "error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.shokochukin.co.jp/recruit/newgraduate/",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "ntt-it-67-ntt-docomo-ds": {
       "target_id": "ntt-it-67-ntt-docomo-ds",
@@ -1758,8 +1758,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-87-it-67-": {
       "target_id": "jp-87-it-67-",
@@ -1920,8 +1920,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-95-it-66-": {
       "target_id": "jp-95-it-66-",
@@ -2011,8 +2011,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "kddi-it-66-kddi-ds": {
       "target_id": "kddi-it-66-kddi-ds",
@@ -2032,8 +2032,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "accenture-consulting-65-accenture": {
       "target_id": "accenture-consulting-65-accenture",
@@ -2069,7 +2069,7 @@
       "error": "HTTPSConnectionPool(host='www.sbishinseibank.co.jp', port=443): Read timed out. (read timeout=25)",
       "posting_type": "unknown",
       "last_error": "404 Client Error: Not Found for url: https://www.sbishinseibank.co.jp/recruit/newgraduate/",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-102-consulting-65-": {
       "target_id": "jp-102-consulting-65-",
@@ -2261,8 +2261,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-112-it-64-ds": {
       "target_id": "jp-112-it-64-ds",
@@ -2282,8 +2282,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "jp-113-it-64-it": {
       "target_id": "jp-113-it-64-it",
@@ -2538,8 +2538,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "-it-zip": {
       "target_id": "-it-zip",
@@ -2814,8 +2814,8 @@
       "posting_type": "internship",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     },
     "obic-it-zip": {
       "target_id": "obic-it-zip",
@@ -2948,8 +2948,8 @@
       "posting_type": "newgrad",
       "ai_used": true,
       "error": null,
-      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: ",
-      "last_error_at": "2026-11-02T23:16:25.316737+00:00"
+      "last_error": "DeepSeek応答を3回処理できませんでした: DeepSeek HTTP 400: Bad Request",
+      "last_error_at": "2026-11-03T23:15:56.354452+00:00"
     }
   }
 }
