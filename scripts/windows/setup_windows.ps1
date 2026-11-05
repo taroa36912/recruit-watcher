@@ -1,7 +1,7 @@
 ﻿# Surface（Windows）への移行セットアップ。初回に1回だけ実行する。
 #   1. Python仮想環境と依存パッケージ
-#   2. .env 作成（APIキー入力）
-#   3. 設定検証と dry-run（DeepSeek・Discordへは送信しない）
+#   2. .env 作成（Discord Webhook入力）
+#   3. Claude Code CLI のログイン確認、設定検証と dry-run（AI・Discordへは送信しない）
 #   4. git のコミット者設定
 #   5. GitHub Actions の定期実行を停止
 #   6. タスクスケジューラに毎日の実行を登録
@@ -48,14 +48,11 @@ if (Test-Path $EnvFile) {
         try { return [Runtime.InteropServices.Marshal]::PtrToStringBSTR($b).Trim() }
         finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($b) }
     }
-    $deepseek = Read-Secret "DEEPSEEK_API_KEY を貼り付けてEnter"
     $discord = Read-Secret "DISCORD_WEBHOOK_URL を貼り付けてEnter"
     $content = @"
 DISCORD_WEBHOOK_URL=$discord
-DEEPSEEK_API_KEY=$deepseek
-DEEPSEEK_MODEL=deepseek-v4-pro
-DEEPSEEK_BASE_URL=https://api.deepseek.com
-DEEPSEEK_ENABLED=true
+# 判定AI: claude_cli（Claude Code / Proサブスクリプション）または deepseek
+AI_BACKEND=claude_cli
 GRADUATION_YEAR=2028
 "@
     # python-dotenv がBOMを誤読しないよう BOM なし UTF-8 で書く
@@ -64,10 +61,24 @@ GRADUATION_YEAR=2028
 }
 
 # ---------------------------------------------------------------- 3
+Step "Claude Code CLI のログインを確認（ごく短い呼び出しを1回行う）"
+if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
+    $local = Join-Path $HOME ".local\bin"
+    if (Test-Path (Join-Path $local "claude.exe")) { $env:Path = "$local;$env:Path" }
+}
+if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
+    throw "claude コマンドが見つかりません。手順書の「Claude Code のインストール」を先に実行してください"
+}
+[Console]::OutputEncoding = [Text.Encoding]::UTF8
+$ping = "Reply with OK only." | claude -p --output-format json --model haiku | Out-String
+try { $res = $ping | ConvertFrom-Json } catch { throw "claude CLI の応答を読めませんでした: $ping" }
+if ($res.is_error) { throw "claude CLI がエラーを返しました（未ログインの可能性。claude を起動して /login してください）: $($res.result)" }
+Write-Host "claude CLI OK: $($res.result)"
+
 Step "設定を検証"
 & $Python src\checker.py --validate-config; Assert-Ok "設定検証"
 if (-not $SkipDryRun) {
-    Step "dry-run（ページ取得のみ。DeepSeek・Discordへは送信せず、stateも更新しない）"
+    Step "dry-run（ページ取得のみ。AI・Discordへは送信せず、stateも更新しない）"
     & $Python src\checker.py --profile daily --dry-run; Assert-Ok "dry-run"
 }
 

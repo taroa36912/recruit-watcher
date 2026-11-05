@@ -1,7 +1,8 @@
 # Surface（Windows）での定期実行への移行手順
 
 GitHub Actions の毎日実行（`daily-check.yml`）を停止し、Surface のタスクスケジューラで毎日 08:15 に実行します。
-処理内容は Actions と同じです（巡回 → DeepSeek判定 → Discord通知 → `data/state.json` をコミットしてpush）。
+処理内容: 巡回 → **Claude Code CLI（Claude Pro のログイン済みセッション）で判定** → Discord通知 → `data/state.json` をコミットしてpush。
+APIキーは使いません（従量課金なし。Pro の利用枠を消費します）。
 
 以下はすべて **Surface 上の PowerShell**（通常権限で可）で、上から順に実行します。
 
@@ -17,6 +18,22 @@ winget install -e --id GitHub.cli --accept-source-agreements --accept-package-ag
 
 ```powershell
 $env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User')
+```
+
+## 1.5 Claude Code のインストールとログイン
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+```powershell
+$env:Path = "$HOME\.local\bin;" + $env:Path
+```
+
+対話画面が開いたら `/login` で **Claude Pro のアカウント**でログインし、`/exit` で閉じます（初回のみ）。
+
+```powershell
+claude
 ```
 
 ## 2. GitHub にログイン
@@ -75,7 +92,7 @@ cd "$JobHunting\recruit-watcher"
 
 ## 5. セットアップ（Actions停止 + タスク登録まで一括）
 
-途中で `DEEPSEEK_API_KEY` と `DISCORD_WEBHOOK_URL` の入力を求められます（GitHub Secrets に登録したものと同じ値）。
+途中で `DISCORD_WEBHOOK_URL` の入力を求められます（GitHub Secrets に登録したものと同じ値）。DeepSeek のキーは不要です。
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\windows\setup_windows.ps1
@@ -85,14 +102,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\windows\setup_wind
 
 1. `.venv` 作成と依存パッケージのインストール
 2. `.env` 作成（既にあれば触らない）
-3. 設定検証と dry-run（ページ取得のみ。DeepSeek・Discordへは送らず、stateも更新しない）
+3. Claude Code CLI のログイン確認（haiku に1回だけ短く問い合わせ）、設定検証、dry-run（ページ取得のみ。AI・Discordへは送らず、stateも更新しない）
 4. git のコミット者設定と push 権限の確認
 5. `gh workflow disable daily-check.yml` で Actions の定期実行を停止
 6. タスクスケジューラに `RecruitWatcher-Daily`（毎日 08:15）を登録
 
 オプション: 実行時刻を変える `-Time "07:30"`、Actions を止めない `-SkipDisableActions`、dry-run を省く `-SkipDryRun`。
 
-## 6. 動作確認（本番と同じ実行。DeepSeek課金・Discord通知あり）
+## 6. 動作確認（本番と同じ実行。Proの利用枠を消費・Discord通知あり）
 
 ```powershell
 Start-ScheduledTask -TaskName RecruitWatcher-Daily
@@ -116,6 +133,20 @@ Surface はモダンスタンバイのため、スリープ中はタスクで起
 ```powershell
 powercfg /change standby-timeout-ac 0
 ```
+
+## Claude 判定の設定
+
+`config/targets.yaml` の `ai` で変更できます（`.env` の同名環境変数が優先）。
+
+| 項目 | 既定値 | 説明 |
+| --- | --- | --- |
+| `ai.backend` / `AI_BACKEND` | `claude_cli` | `deepseek` にすると従来の DeepSeek API に戻る |
+| `ai.claude_cli.model` / `CLAUDE_MODEL` | `sonnet` | 利用枠を節約したい場合は `haiku` |
+| `ai.claude_cli.max_chars_per_target` | `3000` | 1社あたりの本文上限（DeepSeek時は6000） |
+| `ai.claude_cli.max_total_chars` | `80000` | 1回の呼び出しの上限。超えたら複数回に分割 |
+| `ai.claude_cli.timeout_seconds` | `900` | 1回の呼び出しのタイムアウト |
+
+Pro の利用上限に達した場合はその回の判定がエラーになり、Discord に失敗通知が届きます（翌日は通常どおり実行）。
 
 ## 運用メモ
 
