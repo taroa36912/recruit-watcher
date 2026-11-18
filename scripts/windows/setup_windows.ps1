@@ -101,8 +101,10 @@ if (-not $SkipDisableActions) {
 # ---------------------------------------------------------------- 6
 Step "タスクスケジューラに登録（毎日 $Time）"
 $RunScript = Join-Path $Repo "scripts\windows\run_daily.ps1"
-$action = New-ScheduledTaskAction -Execute "powershell.exe" `
-    -Argument "-NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$RunScript`"" `
+# conhost --headless 経由で起動し、ウィンドウを一切作らない。
+# （既定ターミナルが Windows Terminal だと -WindowStyle Hidden が効かず、窓が出てフォーカスを奪うため）
+$action = New-ScheduledTaskAction -Execute "conhost.exe" `
+    -Argument "--headless powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$RunScript`"" `
     -WorkingDirectory $Repo
 $trigger = New-ScheduledTaskTrigger -Daily -At $Time
 $settings = New-ScheduledTaskSettingsSet `
