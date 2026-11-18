@@ -234,3 +234,63 @@ def test_validate_profile_zero_target_category():
     taxonomy["categories"]["research"] = "研究職"
     errors = validate_config([_target(category="quant")], taxonomy)
     assert any("対象が0件です" in e for e in errors)
+
+
+# ---- Claude Code CLI バックエンド ----
+
+class _FakeProc:
+    def __init__(self, stdout, returncode=0, stderr=""):
+        self.stdout = stdout
+        self.returncode = returncode
+        self.stderr = stderr
+
+
+def test_claude_cli_post_chunk_parses_result_and_usage():
+    calls = []
+
+    def fake_run(cmd, **kwargs):
+        calls.append((cmd, kwargs))
+        envelope = {
+            "type": "result", "subtype": "success", "is_error": False,
+            "result": '```json\n{"results": [{"id": "a", "is_open": true, "posting_type": "internship"}]}\n```',
+            "usage": {"input_tokens": 100, "cache_read_input_tokens": 20, "output_tokens": 30},
+        }
+        return _FakeProc(json.dumps(envelope))
+
+    items = [{"id": "a", "company": "A", "category": "quant", "url": "u", "text": "28卒 インターン"}]
+    parsed, usage = checker.claude_cli_post_chunk(items, {"claude_cli": {"model": "haiku"}}, "2028", run_fn=fake_run)
+    assert parsed["results"][0]["id"] == "a"
+    assert usage == {"prompt_tokens": 120, "completion_tokens": 30, "total_tokens": 150}
+    cmd, kwargs = calls[0]
+    assert cmd[cmd.index("--model") + 1] == "haiku"
+    assert "-p" in cmd and "--system-prompt" in cmd
+    assert '"id": "a"' in kwargs["input"]
+    assert "ANTHROPIC_API_KEY" not in kwargs["env"]
+
+
+def test_claude_cli_usage_limit_is_not_retried():
+    calls = []
+
+    def fake_run(cmd, **kwargs):
+        calls.append(1)
+        return _FakeProc(json.dumps({"subtype": "success", "is_error": True, "result": "Claude AI usage limit reached"}))
+
+    with pytest.raises(RuntimeError):
+        checker.claude_cli_post_chunk([{"id": "a"}], {}, "2028", run_fn=fake_run)
+    assert len(calls) == 1
+
+
+def test_ai_backend_env_override(monkeypatch):
+    monkeypatch.setenv("AI_BACKEND", "deepseek")
+    assert checker.ai_backend({"backend": "claude_cli"}) == "deepseek"
+    monkeypatch.delenv("AI_BACKEND")
+    assert checker.ai_backend({}) == "claude_cli"
+
+
+def test_batch_limits_prefers_claude_cli_settings(monkeypatch):
+    monkeypatch.delenv("AI_BACKEND", raising=False)
+    ai = {"backend": "claude_cli", "max_chars_per_target": 6000, "max_total_chars": 200000,
+          "claude_cli": {"max_chars_per_target": 3000, "max_total_chars": 80000}}
+    assert checker.batch_limits(ai) == (3000, 80000)
+    ai["backend"] = "deepseek"
+    assert checker.batch_limits(ai) == (6000, 200000)

@@ -8,7 +8,9 @@ import logging
 import os
 import re
 import shutil
+import subprocess
 import sys
+import tempfile
 import time
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -39,10 +41,10 @@ RECRUIT_KEYWORDS = [
 
 
 class TruncatedResponseError(RuntimeError):
-    """DeepSeekの出力がmax_tokensで打ち切られた（finish_reason=length）ことを表す。"""
+    """AIの出力が出力上限で打ち切られたことを表す。"""
 
     def __init__(self, item_count: int):
-        super().__init__(f"DeepSeek出力が打ち切られました (finish_reason=length, {item_count}件)")
+        super().__init__(f"AI出力が打ち切られました ({item_count}件)")
         self.item_count = item_count
 
 
@@ -301,9 +303,8 @@ def deepseek_config(settings: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-def build_payload(items: List[Dict[str, Any]], settings: Dict[str, Any], ai_settings: Dict[str, Any], grad_year: str) -> Dict[str, Any]:
-    cfg = deepseek_config(settings)
-    system_prompt = (
+def build_system_prompt(grad_year: str) -> str:
+    return (
         f"あなたは日本の新卒採用ページを判定する監査役です。対象卒年は{grad_year}年卒です。"
         "与えられたJSON配列の各候補について、ページ本文だけを根拠に判定してください。"
         "説明文やMarkdownコードブロックは付けず、JSONオブジェクトを1つだけ返してください。\n"
@@ -321,6 +322,11 @@ def build_payload(items: List[Dict[str, Any]], settings: Dict[str, Any], ai_sett
         "各入力idに対して結果を必ず1件だけ返し、idは入力値をそのまま出力してください。"
         "1つの応答に多数の候補が含まれるため簡潔さが重要です。reason は全角40文字以内、title は全角30文字以内とし、いずれも改行を含めないでください。"
     )
+
+
+def build_payload(items: List[Dict[str, Any]], settings: Dict[str, Any], ai_settings: Dict[str, Any], grad_year: str) -> Dict[str, Any]:
+    cfg = deepseek_config(settings)
+    system_prompt = build_system_prompt(grad_year)
     user_content = json.dumps(items, ensure_ascii=False)
     return {
         "model": cfg["model"],
@@ -389,6 +395,126 @@ def deepseek_post_chunk(
     raise RuntimeError(f"DeepSeek判定結果が得られませんでした: {last_error}")
 
 
+def ai_backend(ai_settings: Dict[str, Any]) -> str:
+    """判定に使うAI。環境変数 AI_BACKEND が設定ファイルより優先。"""
+    backend = (os.getenv("AI_BACKEND") or ai_settings.get("backend") or "claude_cli").strip().lower()
+    if backend not in ("claude_cli", "deepseek"):
+        raise ValueError(f"不明な AI_BACKEND: {backend}（claude_cli / deepseek）")
+    return backend
+
+
+def batch_limits(ai_settings: Dict[str, Any]) -> Tuple[int, int]:
+    """(1 targetあたりの最大文字数, 1回の呼び出しの最大文字数)。claude_cli は個別設定を優先。"""
+    per_target = int(ai_settings.get("max_chars_per_target", 6000))
+    total = int(ai_settings.get("max_total_chars", 200000))
+    if ai_backend(ai_settings) == "claude_cli":
+        cli = ai_settings.get("claude_cli") or {}
+        per_target = int(cli.get("max_chars_per_target", per_target))
+        total = int(cli.get("max_total_chars", total))
+    return per_target, total
+
+
+def find_claude_cli() -> str:
+    """claude コマンドの場所。CLAUDE_CLI_PATH → PATH → 公式インストーラの既定位置の順に探す。"""
+    explicit = os.getenv("CLAUDE_CLI_PATH", "").strip()
+    if explicit:
+        return explicit
+    found = shutil.which("claude")
+    if found:
+        return found
+    home = Path.home()
+    for cand in (home / ".local" / "bin" / "claude.exe", home / ".local" / "bin" / "claude", home / ".claude" / "local" / "claude"):
+        if cand.exists():
+            return str(cand)
+    raise RuntimeError("claude コマンドが見つかりません。Claude Code をインストールし、ログインしてください")
+
+
+def claude_cli_post_chunk(
+    items: List[Dict[str, Any]],
+    ai_settings: Dict[str, Any],
+    grad_year: str,
+    attempts_counter: Optional[List[int]] = None,
+    run_fn: Optional[Any] = None,
+) -> Tuple[Dict[str, Any], Optional[Dict[str, Any]]]:
+    """Claude Code CLI（claude -p）を1回呼び、判定JSONを返す。
+
+    APIキーではなく、ログイン済みの Claude Pro/Max サブスクリプションで実行する。
+    run_fn はテスト用の注入ポイント（subprocess.run と同じ引数を受け取る）。
+    """
+    cli = ai_settings.get("claude_cli") or {}
+    model = str(os.getenv("CLAUDE_MODEL") or cli.get("model") or "sonnet")
+    timeout = int(cli.get("timeout_seconds", 900))
+    run = run_fn or subprocess.run
+
+    cmd = [
+        find_claude_cli() if run_fn is None else "claude",
+        "-p",
+        "--output-format", "json",
+        "--model", model,
+        # Claude Code 既定のシステムプロンプトを置き換え、純粋な判定器として使う
+        "--system-prompt", build_system_prompt(grad_year),
+        # ツールは使わせない（ページ本文だけを根拠に判定させる）
+        "--tools", "",
+    ]
+    user_content = (
+        "次のJSON配列の各候補を判定し、指定形式のJSONオブジェクトだけを返してください。\n"
+        + json.dumps(items, ensure_ascii=False)
+    )
+    env = dict(os.environ)
+    # APIキーがあると従量課金のAPI経由になるため外す（サブスクリプションで実行させる）
+    env.pop("ANTHROPIC_API_KEY", None)
+
+    last_error: Optional[Exception] = None
+    for attempt in range(1, 4):
+        try:
+            # 作業ディレクトリは空の一時フォルダ（リポジトリのCLAUDE.md等を読ませない）
+            with tempfile.TemporaryDirectory(prefix="recruit-watch-") as workdir:
+                proc = run(
+                    cmd, input=user_content, capture_output=True, text=True,
+                    encoding="utf-8", errors="replace", timeout=timeout, cwd=workdir, env=env,
+                )
+            if attempts_counter is not None:
+                attempts_counter[0] += 1
+            stdout = (proc.stdout or "").strip()
+            if not stdout:
+                stderr = (proc.stderr or "").strip()[:700]
+                raise RuntimeError(f"claude CLI の出力が空です (exit={proc.returncode}): {stderr}")
+            envelope = json.loads(stdout)
+            if envelope.get("is_error") or envelope.get("subtype") not in (None, "success"):
+                raise RuntimeError(f"claude CLI エラー: {str(envelope.get('result') or envelope)[:700]}")
+            if envelope.get("stop_reason") == "max_tokens":
+                raise TruncatedResponseError(len(items))
+            content = str(envelope.get("result") or "")
+            if not content.strip():
+                raise RuntimeError("claude CLI が空の結果を返しました")
+            parsed = extract_json_object(content)
+            usage = envelope.get("usage") or {}
+            mapped = {
+                "prompt_tokens": int(usage.get("input_tokens", 0) or 0)
+                + int(usage.get("cache_read_input_tokens", 0) or 0)
+                + int(usage.get("cache_creation_input_tokens", 0) or 0),
+                "completion_tokens": int(usage.get("output_tokens", 0) or 0),
+            }
+            mapped["total_tokens"] = mapped["prompt_tokens"] + mapped["completion_tokens"]
+            return parsed, mapped
+        except TruncatedResponseError:
+            raise
+        except subprocess.TimeoutExpired:
+            last_error = RuntimeError(f"claude CLI が {timeout} 秒以内に終わりませんでした")
+            if attempts_counter is not None:
+                attempts_counter[0] += 1
+        except (ValueError, KeyError, TypeError, RuntimeError, OSError, json.JSONDecodeError) as exc:
+            last_error = exc
+            # 利用上限・未ログインは再試行しても回復しない
+            msg = str(exc).lower()
+            if "limit" in msg or "login" in msg or "見つかりません" in msg:
+                raise RuntimeError(str(exc)) from exc
+        if attempt < 3:
+            log.warning("claude CLI 応答エラー。%d/3回目を再試行します: %s", attempt, last_error)
+            time.sleep(5 * attempt)
+    raise RuntimeError(f"claude CLI の応答を3回処理できませんでした: {last_error}")
+
+
 def parse_batch_results(parsed: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
     mapping: Dict[str, Dict[str, Any]] = {}
     if not isinstance(parsed, dict):
@@ -414,23 +540,27 @@ def merge_usage(total: Dict[str, int], usage: Optional[Dict[str, Any]]) -> None:
             total[key] = total.get(key, 0) + value
 
 
-def deepseek_classify_batch(
+def classify_batch(
     items: List[Dict[str, Any]],
     settings: Dict[str, Any],
     ai_settings: Dict[str, Any],
     grad_year: str,
     post_fn: Optional[Any] = None,
 ) -> Tuple[Dict[str, Dict[str, Any]], Dict[str, Any]]:
-    """全候補を1回（必要なら最小チャンク数）のPOSTで判定する。
+    """全候補を1回（必要なら最小チャンク数）のAI呼び出しで判定する。
 
     post_fn はテスト用の注入ポイントで、chunk(項目リスト)を受け取り
-    (parsed_dict, usage_dict) を返す。None なら実APIを呼ぶ。
+    (parsed_dict, usage_dict) を返す。None なら設定された AI（claude_cli / deepseek）を呼ぶ。
     """
     attempts_counter: List[int] = [0]
     if post_fn is None:
-        post_fn = lambda chunk: deepseek_post_chunk(chunk, settings, ai_settings, grad_year, attempts_counter)
-
-    max_total = int(ai_settings.get("max_total_chars", 200000))
+        if ai_backend(ai_settings) == "claude_cli":
+            post_fn = lambda chunk: claude_cli_post_chunk(chunk, ai_settings, grad_year, attempts_counter)
+        else:
+            post_fn = lambda chunk: deepseek_post_chunk(chunk, settings, ai_settings, grad_year, attempts_counter)
+        _, max_total = batch_limits(ai_settings)
+    else:
+        max_total = int(ai_settings.get("max_total_chars", 200000))
     chunks = build_batch_chunks(items, max_total)
     stats: Dict[str, Any] = {"posts": 0, "total_chars": 0, "latency_seconds": 0.0, "usage": {}, "truncated_splits": 0}
     start = time.time()
@@ -445,13 +575,13 @@ def deepseek_classify_batch(
         except TruncatedResponseError:
             if len(chunk) == 1:
                 item = chunk[0]
-                log.warning("DeepSeek出力が打ち切られたため単一アイテムを不明として扱います: %s", item["id"])
+                log.warning("AI出力が打ち切られたため単一アイテムを不明として扱います: %s", item["id"])
                 mapping[str(item["id"])] = {"id": item["id"], "is_open": "unknown", "posting_type": "unknown", "missing": True}
                 return
             mid = len(chunk) // 2
             left, right = chunk[:mid], chunk[mid:]
             stats["truncated_splits"] = stats["truncated_splits"] + 1
-            log.warning("DeepSeek出力が打ち切られたためチャンクを分割します: %d件 -> %d件/%d件", len(chunk), len(left), len(right))
+            log.warning("AI出力が打ち切られたためチャンクを分割します: %d件 -> %d件/%d件", len(chunk), len(left), len(right))
             process_chunk(left)
             process_chunk(right)
             return
@@ -471,7 +601,7 @@ def deepseek_classify_batch(
 
     # 成功応答にidが欠落していた場合、不足分だけ一度だけ再要求する。
     if missing:
-        log.warning("DeepSeek応答に %d 件のidが欠落していたため、不足分のみ再要求します", len(missing))
+        log.warning("AI応答に %d 件のidが欠落していたため、不足分のみ再要求します", len(missing))
         stats["total_chars"] += chunk_chars(missing)
         try:
             parsed, usage = post_fn(missing)
@@ -488,6 +618,10 @@ def deepseek_classify_batch(
     stats["posts"] = attempts_counter[0] if attempts_counter[0] else (len(chunks) + (1 if missing else 0))
     stats["latency_seconds"] = round(time.time() - start, 3)
     return mapping, stats
+
+
+# 旧名（テスト・互換用）
+deepseek_classify_batch = classify_batch
 
 
 def status_from_is_open(is_open: Any) -> str:
@@ -523,7 +657,7 @@ def ai_result_from_entry(
     if entry.get("missing"):
         return Result(
             target["id"], target["company"], target["category"], target["url"],
-            "possible", 0, ["DeepSeek応答にidが欠落していたため不明"], heuristic_excerpt,
+            "possible", 0, ["AI応答にidが欠落していたため不明"], heuristic_excerpt,
             digest, now, posting_type="unknown", ai_used=True,
         )
 
@@ -534,7 +668,7 @@ def ai_result_from_entry(
     confidence = confidence_percent(entry)
     reason = str(entry.get("reason") or "").strip()
     title = str(entry.get("title") or "").strip()
-    reasons = [f"DeepSeek判定信頼度: {confidence}%"]
+    reasons = [f"AI判定信頼度: {confidence}%"]
     if reason:
         reasons.append(reason)
     excerpt = (title or heuristic_excerpt)[:1000]
@@ -587,7 +721,7 @@ def run_batch(
     taxonomy: Dict[str, Any],
 ) -> Tuple[List[Result], Dict[str, Any]]:
     grad_year = str(os.getenv("GRADUATION_YEAR", settings.get("graduation_year", 2028)))
-    max_chars = int(ai_settings.get("max_chars_per_target", 6000))
+    max_chars, _ = batch_limits(ai_settings)
     allowed_posting_types = valid_posting_types(taxonomy)
 
     fetched, results = fetch_targets(targets, settings)
@@ -599,7 +733,7 @@ def run_batch(
     if use_ai and fetched:
         items = build_batch_items(fetched, max_chars)
         stats["batched"] = len(items)
-        mapping, ai_stats = deepseek_classify_batch(items, settings, ai_settings, grad_year)
+        mapping, ai_stats = classify_batch(items, settings, ai_settings, grad_year)
         stats.update(ai_stats)
         for target, text in fetched:
             entry = mapping.get(str(target["id"]))
@@ -607,20 +741,20 @@ def run_batch(
             if entry is None:
                 entry = {"id": target["id"], "is_open": "unknown", "posting_type": "unknown", "missing": True}
             if entry.get("error"):
-                if bool(settings.get("require_deepseek", True)):
+                if bool(settings.get("require_ai", settings.get("require_deepseek", True))):
                     now = datetime.now(timezone.utc).isoformat()
                     results.append(Result(
                         target["id"], target["company"], target["category"], target["url"],
                         "error", 0, [], "", "", now, error=entry["error"],
                     ))
                 else:
-                    log.warning("%s: DeepSeek失敗のためルール判定へフォールバック: %s", target["company"], entry["error"])
-                    results.append(heuristic_result(target, text, heuristic, "DeepSeek失敗のためルール判定"))
+                    log.warning("%s: AI判定失敗のためルール判定へフォールバック: %s", target["company"], entry["error"])
+                    results.append(heuristic_result(target, text, heuristic, "AI判定失敗のためルール判定"))
             else:
                 results.append(ai_result_from_entry(target, text, entry, heuristic, allowed_posting_types))
     else:
         for target, text in fetched:
-            results.append(heuristic_result(target, text, heuristic_classify(text, target, settings), "ローカルテスト: DeepSeek未使用"))
+            results.append(heuristic_result(target, text, heuristic_classify(text, target, settings), "ローカルテスト: AI未使用"))
 
     return results, stats
 
@@ -737,9 +871,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--profile", help="実行プロファイル名（例: daily）")
     p.add_argument("--target", help="target idを1件指定")
     p.add_argument("--limit", type=int, default=0, help="先頭N件のみ。Macローカルテスト向け")
-    p.add_argument("--no-ai", action="store_true", help="DeepSeekを呼ばず無料で接続・判定テスト")
+    p.add_argument("--no-ai", action="store_true", help="AIを呼ばず接続・ルール判定だけテスト")
     p.add_argument("--no-discord", action="store_true", help="Discord送信を抑止")
-    p.add_argument("--dry-run", action="store_true", help="バッチ組み立てのみ確認（DeepSeek・Discordへは送信しない）")
+    p.add_argument("--dry-run", action="store_true", help="バッチ組み立てのみ確認（AI・Discordへは送信しない）")
     p.add_argument("--validate-config", action="store_true", help="設定だけ検証")
     p.add_argument("--list", action="store_true", help="対象一覧を表示")
     return p.parse_args()
@@ -791,17 +925,18 @@ def main() -> int:
 
     if args.dry_run:
         fetched, _ = fetch_targets(targets, settings)
-        items = build_batch_items(fetched, int(ai_settings.get("max_chars_per_target", 6000)))
-        chunks = build_batch_chunks(items, int(ai_settings.get("max_total_chars", 200000)))
+        per_target, total = batch_limits(ai_settings)
+        items = build_batch_items(fetched, per_target)
+        chunks = build_batch_chunks(items, total)
         log.info(
-            "dry-run: 対象=%d / 取得=%d / バッチ項目=%d / 送信文字数=%d / チャンク数=%d（=POST数）",
-            len(targets), len(fetched), len(items), sum(chunk_chars(c) for c in chunks), len(chunks),
+            "dry-run: AI=%s / 対象=%d / 取得=%d / バッチ項目=%d / 送信文字数=%d / チャンク数=%d（=AI呼び出し数）",
+            ai_backend(ai_settings), len(targets), len(fetched), len(items), sum(chunk_chars(c) for c in chunks), len(chunks),
         )
         return 0
 
     migrate_state()
     previous_state = load_state().get("targets", {})
-    use_ai = env_bool("DEEPSEEK_ENABLED", True) and not args.no_ai
+    use_ai = env_bool("AI_ENABLED", env_bool("DEEPSEEK_ENABLED", True)) and not args.no_ai
 
     results, stats = run_batch(targets, settings, ai_settings, use_ai, taxonomy)
 
@@ -827,9 +962,9 @@ def main() -> int:
     save_state(results)
 
     log.info(
-        "取得:%d件 バッチ投入:%d件 送信文字数:%d DeepSeekPOST:%d回 AI所要:%.2fs tokens:%s",
+        "取得:%d件 バッチ投入:%d件 送信文字数:%d AI呼び出し(%s):%d回 AI所要:%.2fs tokens:%s",
         stats.get("fetched", 0), stats.get("batched", 0), stats.get("total_chars", 0),
-        stats.get("posts", 0), stats.get("latency_seconds", 0.0), stats.get("usage", {}),
+        ai_backend(ai_settings), stats.get("posts", 0), stats.get("latency_seconds", 0.0), stats.get("usage", {}),
     )
 
     error_count = sum(1 for r in results if r.status == "error")

@@ -9,7 +9,7 @@ settings:
   - open_company
   notify_unknown_posting_type: true
   max_discord_items: 40
-  require_deepseek: true
+  require_ai: true
   deepseek_timeout_seconds: 90
   error_rate_fail_threshold: 0.3
   positive_keywords:
@@ -82,9 +82,20 @@ settings:
     - 基礎研究
     - 研究所
 ai:
+  # 判定に使うAI: claude_cli（Claude Code CLI / Proサブスクリプション）または deepseek（API）
+  # .env の AI_BACKEND で上書き可能
+  backend: claude_cli
+  # 以下3つは deepseek 用（claude_cli でも claude_cli 側に指定が無ければ使われる）
   max_chars_per_target: 6000
   max_total_chars: 200000
   max_tokens: 16384
+  claude_cli:
+    # sonnet / opus / haiku（.env の CLAUDE_MODEL で上書き可能）
+    model: sonnet
+    # Proプランの利用枠を節約するため、DeepSeekより入力を絞る
+    max_chars_per_target: 3000
+    max_total_chars: 80000
+    timeout_seconds: 900
 targets:
 - id: google-it-75-google-softwareengineer
   company: Google
